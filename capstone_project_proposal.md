@@ -84,19 +84,23 @@ Highest price and lowest price values when compared to open price and close pric
 
 ### Solution Statement
 
-Since this prediction is a regression problem we can define a supervised machine learning algorithm to predict adjusted close price at the end of the day. We can use supervised machine learning techniques to gather trend information of previous 5-10 days and use that trend to predict next day's adjusted close price. Once the predictor is trained it can be used to predict for various requested dates.
+Since this prediction is a regression problem we can define a supervised machine learning algorithms to predict adjusted close price at the end of the day. We can use supervised machine learning techniques to gather trend information of previous 5-10 days and use that trend to predict next day's adjusted close price. Once the predictor is trained it can be used to predict for various requested dates.
+
+I am planning to implement a bunch of supervised machine learning algorithms like Linear Regression, SVM, RVM etc. and compare success of the models with the evaluation metrics RMSE as specified below.
 
 ### Benchmark Model
 
-
-In this section, provide the details for a benchmark model or result that relates to the domain, problem statement, and intended solution. Ideally, the benchmark model or result contextualizes existing methods or known information in the domain and problem given, which could then be objectively compared to the solution. Describe how the benchmark model or result is measurable (can be measured by some metric and clearly observed) with thorough detail.
-
-The requested dates adjusted close price can be used as a benchmark to check the performance of the solution. 
+The requested dates' adjusted close price, namely the actual data we are trying to predict can be used as a benchmark to check the performance of the solution with RMSE which is discussed below.
 
 ### Evaluation Metrics
 _(approx. 1-2 paragraphs)_
 
-In this section, propose at least one evaluation metric that can be used to quantify the performance of both the benchmark model and the solution model. The evaluation metric(s) you propose should be appropriate given the context of the data, the problem statement, and the intended solution. Describe how the evaluation metric(s) are derived and provide an example of their mathematical representations (if applicable). Complex evaluation metrics should be clearly defined and quantifiable (can be expressed in mathematical or logical terms).
+I would like to use RMSE(root mean squared error) for evaluation metrics.
+
+<img src="http://latex.codecogs.com/gif.latex?\sqrt{\frac{\sum_{i=1}^{n}&space;(Predicted&space;-&space;Actual)^{2}}{N}}" title="\sqrt{\frac{\sum_{i=1}^{n} (Predicted - Actual)^{2}}{N}}" />
+
+In RMSE since the errors are squared before averaging, the RMSE gives a relatively high weight to large errors. This means the RMSE should be more useful when large errors are particularly undesirable w.r.t. 
+That is a very suitable property for a stock price indicator when real data is used as a benchmark.
 
 ### Project Design
 _(approx. 1 page)_
