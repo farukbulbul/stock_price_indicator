@@ -84,40 +84,61 @@ Highest price and lowest price values when compared to open price and close pric
 
 ### Solution Statement
 
-Since this prediction is a regression problem we can define a supervised machine learning algorithms to predict adjusted close price at the end of the day. We can use supervised machine learning techniques to gather trend information of previous 5-10 days and use that trend to predict next day's adjusted close price. Once the predictor is trained it can be used to predict for various requested dates.
+Since this prediction is a regression problem we can define supervised machine learning algorithms to predict adjusted close price at the end of the day. We can use supervised machine learning techniques to gather trend information of previous 5-10 days and use that trend to predict next day's adjusted close price. Once the predictor is trained it can be used to predict for various requested dates.
 
-I am planning to implement a bunch of supervised machine learning algorithms like Linear Regression, SVM, RVM etc. and compare success of the models with the evaluation metrics RMSE as specified below.
+I am planning to implement a bunch of supervised machine learning algorithms like Logistic Regression, SVM, RVM, Deep Forest etc. and compare success of the models with the evaluation metrics RMSE as specified below.
 
 ### Benchmark Model
 
 The requested dates' adjusted close price, namely the actual data we are trying to predict can be used as a benchmark to check the performance of the solution with RMSE which is discussed below.
 
 ### Evaluation Metrics
-_(approx. 1-2 paragraphs)_
-
 I would like to use RMSE(root mean squared error) for evaluation metrics.
 
 <img src="http://latex.codecogs.com/gif.latex?\sqrt{\frac{\sum_{i=1}^{n}&space;(Predicted&space;-&space;Actual)^{2}}{N}}" title="\sqrt{\frac{\sum_{i=1}^{n} (Predicted - Actual)^{2}}{N}}" />
 
-In RMSE since the errors are squared before averaging, the RMSE gives a relatively high weight to large errors. This means the RMSE should be more useful when large errors are particularly undesirable w.r.t. 
+In RMSE since the errors are squared before averaging, the RMSE gives a relatively high weight to large errors. This means the RMSE should be more useful when large errors are particularly undesirable.
 That is a very suitable property for a stock price indicator when real data is used as a benchmark.
 
 ### Project Design
-_(approx. 1 page)_
 
-In this final section, summarize a theoretical workflow for approaching a solution given the problem. Provide thorough discussion for what strategies you may consider employing, what analysis of the data might be required before being used, or which algorithms will be considered for your implementation. The workflow and discussion that you provide should align with the qualities of the previous sections. Additionally, you are encouraged to include small visualizations, pseudocode, or diagrams to aid in describing the project design, but it is not required. The discussion should clearly outline your intended workflow of the capstone project.
+I am planning to follow the below worksteps in order to achive a good stock price indicator:
 
-### References
+#### 1- Domain Research:
+
+I am planning to search for successful financial models which are frequently used by investors. For example moving average, bollinger bands, rsi etc. Also these models have some parameters to work with. For example moving average can be calculated for different timesacles where investors look for short, mid or long term insvestments. Since we are dealing with only one days' adjusted close, 5-10 days of moving average would be more suitable. Both of them can be used alternatively to investigate which one is better. The moving average of 5-10 days will be added to data as an additional column. Here we can use volume for weight parameter for a weighted moving average where higher volume will have a higher weight in moving average.  
+<img src="http://www.wikizeroo.net/index.php?q=aHR0cHM6Ly93aWtpbWVkaWEub3JnL2FwaS9yZXN0X3YxL21lZGlhL21hdGgvcmVuZGVyL3N2Zy80NDE1M2FmZjhmZWNiNDFmOGU1YzEwZjI3ZTIwNGQ5OTgwYzIzMTZm" />
+
+Also bollinger bands adds standard deviation to the moving average information for which can contribute to a potential predictor, estimator. The purpose of Bollinger Bands is to provide a relative definition of high and low prices of a market. By definition, prices are high at the upper band and low at the lower band. This definition can aid in rigorous pattern recognition and is useful in comparing price action to the action of indicators to arrive at systematic trading decisions. I am planning to add this information as an additional column to historical data.
+
+BB = (MA(n) +- Kσ) where first term is Moving Average of n days, k is a weight constant for σ standard deviation.
+
+<img src="http://www.wikizeroo.net/index.php?q=aHR0cDovL3VwbG9hZC53aWtpbWVkaWEub3JnL3dpa2lwZWRpYS9jb21tb25zL3RodW1iLzEvMWEvQm9sbGluZ2VyQmFuZHNTUFguc3ZnLzEyMHB4LUJvbGxpbmdlckJhbmRzU1BYLnN2Zy5wbmc"/> [2]
+
+RSI(Relative Strength Index) is also another technical indicator which can contribute pattern recognition. The relative strength index was developed by J. Welles Wilder and published in a 1978 book, New Concepts in Technical Trading Systems, and in Commodities magazine (now Futures magazine) in the June 1978 issue.[3] It has become one of the most popular oscillator indices.[4]
+
+#### 2- Data Exploration and Normalization
+
+Historical data retrieved from Yahoo Finance can have some problems, discontinueties etc. So I am planning to examine if there are null or enexpected values inside csv files. We should either compensate these problems by providing alternatives like manually fixing the data or I should eliminate lines having problematic data.
+
+After fixing the abnormal values within the data, we can normalize it in order not to have weighted solution in terms volume and price of different stocks. Our aim is to find a predictor working equally for all of the stocks.
+
+#### 3- Constructing the Model
+
+I would like to try 3-4 regression algorithms like Logistic Regression, SVM, RVM, Deep Forest etc. to data alternatives constructed with the work flow step 1 and normalized at step 2. I am not sure about train/test ratio. The principle I must follow is not to test the trained data. I will try to evaluate the performance by RMSE and choose best performing method to serve ui.
+
+
+#### 4- Building UI for user experience
+
+I am planning to provide a minimal user interface for selecting stock and date or several dates for user to request easily.
+Maybe I could provide some successful results I came accross during the model construction phase.
+
+#### 5- Readme
+Finally, I am planning to finish readm.md file for the github repository.
+
+#### References
 
 [1] Trading volume: What it reveals about the market from https://www.rediff.com/money/special/trading-volume-what-it-reveals-about-the-market/20090703.htm
-
-
------------
-
-**Before submitting your proposal, ask yourself. . .**
-
-- Does the proposal you have written follow a well-organized structure similar to that of the project template?
-- Is each section (particularly **Solution Statement** and **Project Design**) written in a clear, concise and specific fashion? Are there any ambiguous terms or phrases that need clarification?
-- Would the intended audience of your project be able to understand your proposal?
-- Have you properly proofread your proposal to assure there are minimal grammatical and spelling mistakes?
-- Are all the resources used for this project correctly cited and referenced?
+[2] Bollinger Bands: http://www.wikizeroo.net/index.php?q=aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvQm9sbGluZ2VyX0JhbmRz
+[3] RSI: J. Welles Wilder, New Concepts in Technical Trading Systems, ISBN 0-89459-027-8
+[4] John J. Murphy (2009). The Visual Investor: How to Spot Market Trends (2nd ed.). John Wiley and Sons. p. 100. ISBN 9780470382059.
