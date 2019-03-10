@@ -139,6 +139,9 @@ Finally, I am planning to finish readm.md file for the github repository.
 #### References
 
 [1] Trading volume: What it reveals about the market from https://www.rediff.com/money/special/trading-volume-what-it-reveals-about-the-market/20090703.htm
+
 [2] Bollinger Bands: http://www.wikizeroo.net/index.php?q=aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvQm9sbGluZ2VyX0JhbmRz
+
 [3] RSI: J. Welles Wilder, New Concepts in Technical Trading Systems, ISBN 0-89459-027-8
+
 [4] John J. Murphy (2009). The Visual Investor: How to Spot Market Trends (2nd ed.). John Wiley and Sons. p. 100. ISBN 9780470382059.
