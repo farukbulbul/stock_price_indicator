@@ -15,6 +15,8 @@ Investment firms, hedge funds and even individuals have been using financial mod
 
 Since finance area dynamics are very complex and stock prices depend on so many factors, machine learning can be a good solution if a suitable subset of these factors is selected and a reasonable performance is targeted. In this project I will try to investigate prediction success of close price of stocks given 5 or 10 days previous stock market data with a trained machine learning algorithm which is trained with a dataset set described below.
 
+There are many successful implementations to make an estimator for stock prices one of which creates a framework with neural networks and decision forests.[1] In their "A machine learning based stock trading framework using technical and economic analysis" work they have managed to beat S&P500 Index by far according to charts provided.
+
 ### Problem Statement
 
 The problem is predicting the actual value of adjusted close price of a requested stock for a requested day with 5-10 days of previous data.
@@ -86,11 +88,11 @@ Highest price and lowest price values when compared to open price and close pric
 
 Since this prediction is a regression problem we can define supervised machine learning algorithms to predict adjusted close price at the end of the day. We can use supervised machine learning techniques to gather trend information of previous 5-10 days and use that trend to predict next day's adjusted close price. Once the predictor is trained it can be used to predict for various requested dates.
 
-I am planning to implement a bunch of supervised machine learning algorithms like Logistic Regression, SVM, RVM, Deep Forest etc. and compare success of the models with the evaluation metrics RMSE as specified below.
+I am planning to implement a bunch of supervised machine learning algorithms like SVM and LSTM and compare success of the models with the evaluation metrics RMSE as specified below.
 
 ### Benchmark Model
 
-The requested dates' adjusted close price, namely the actual data we are trying to predict can be used as a benchmark to check the performance of the solution with RMSE which is discussed below.
+We can use Linear Regression algorithm as a benchmark for our solutions to compare with. This simple machine learning model could be used to determine whether we achieved a better estimation or not. 
 
 ### Evaluation Metrics
 I would like to use RMSE(root mean squared error) for evaluation metrics.
@@ -125,7 +127,7 @@ After fixing the abnormal values within the data, we can normalize it in order n
 
 #### 3- Constructing the Model
 
-I would like to try 3-4 regression algorithms like Logistic Regression, SVM, RVM, Deep Forest etc. to data alternatives constructed with the work flow step 1 and normalized at step 2. I am not sure about train/test ratio. The principle I must follow is not to test the trained data. I will try to evaluate the performance by RMSE and choose best performing method to serve ui.
+I would like to try SVM and LSTM to data alternatives constructed with the work flow step 1 and normalized at step 2.  The principle I must follow is not to test the trained data. I will try to evaluate the performance by RMSE and choose best performing method to serve ui. I am planning to apply %80-%20 train-test ratio. 
 
 
 #### 4- Building UI for user experience
@@ -137,11 +139,12 @@ Maybe I could provide some successful results I came accross during the model co
 Finally, I am planning to finish readm.md file for the github repository.
 
 #### References
+[1] A machine learning based stock trading framework using technical and economic analysis http://cs229.stanford.edu/proj2017/final-reports/5234854.pdf
 
-[1] Trading volume: What it reveals about the market from https://www.rediff.com/money/special/trading-volume-what-it-reveals-about-the-market/20090703.htm
+[2] Trading volume: What it reveals about the market from https://www.rediff.com/money/special/trading-volume-what-it-reveals-about-the-market/20090703.htm
 
-[2] Bollinger Bands: http://www.wikizeroo.net/index.php?q=aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvQm9sbGluZ2VyX0JhbmRz
+[3] Bollinger Bands: http://www.wikizeroo.net/index.php?q=aHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvQm9sbGluZ2VyX0JhbmRz
 
-[3] RSI: J. Welles Wilder, New Concepts in Technical Trading Systems, ISBN 0-89459-027-8
+[4] RSI: J. Welles Wilder, New Concepts in Technical Trading Systems, ISBN 0-89459-027-8
 
-[4] John J. Murphy (2009). The Visual Investor: How to Spot Market Trends (2nd ed.). John Wiley and Sons. p. 100. ISBN 9780470382059.
+[5] John J. Murphy (2009). The Visual Investor: How to Spot Market Trends (2nd ed.). John Wiley and Sons. p. 100. ISBN 9780470382059.
