@@ -29,11 +29,19 @@ The predicted value can easily be compared and a benchmark can easily be set up 
 
 I will use 13 different stocks' historical stock prices saved to data folder of this project. Each file is in the csv format and containing approximately 9 years of historical stock market data. Data saved are from Yahoo Finance website and open to public use. The symobols of the stocks in alphabetical order is: AAPL, AMZN, AVGO, CSCO, MA, MSFT, NVDA, NVS, PFE, QCOM, TXN, V, WNT. Historical Data of stock prices can be easily gathered using https://pypi.org/project/yahoo-finance/ project.
 
-In the csv files cloumns are: Date, Open, High, Low, Close, Adjusted Close, Volume. The date column will be necessary for retrieving 5 or 10 previous days of requested date adjusted close price prediction. If close, adjusted close price of a stock is greater than open price it clearly shows a bullish market rather than a bearish one. So relations between open price and close price will be very important for predicting the requested days adjusted close price. Also volume is very important since volume reflects the intensity (strength) of a stock. Volume also provides an indication of the quality of a price trend and the liquidity of a stock. A trend analysis can be done with volume and price like in the below table [1].
+In the csv files cloumns are: Date, Open, High, Low, Close, Adjusted Close, Volume. The date column will be necessary for retrieving 5 or 10 previous days of requested date adjusted close price prediction. 
+
+If close, adjusted close price of a stock is greater than open price it clearly shows a bullish market rather than a bearish one. 
+
+So relations between open price and close price will be very important for predicting the requested days adjusted close price. 
+Also volume is very important since volume reflects the intensity (strength) of a stock. 
+Volume also provides an indication of the quality of a price trend and the liquidity of a stock. 
+
+Highest price and lowest price values when compared to open price and close price are used to interpret trend of the stock by financers.
+
+A trend analysis can be done with volume and price like in the below table [2].
+
 General Rules in Volume Analysis:
-
-
-
 
 <table align="center"> 
   <th>Volume</th><th>Price</th><th>Interpretation</th>
@@ -43,7 +51,7 @@ General Rules in Volume Analysis:
   <tr><td>Decreasing</td><td>Rising</td><td>bearish</td></tr>
 </table>
 
-Highest price and lowest price values when compared to open price and close price are used to interpret trend of the stock by financers. Here is an example of data structure:
+Here is an example of data structure:
 
 <table>
       <thead>
@@ -119,9 +127,9 @@ Also bollinger bands adds standard deviation to the moving average information f
 
 BB = (MA(n) +- Kσ) where first term is Moving Average of n days, k is a weight constant for σ standard deviation.
 
-<img src="http://www.wikizeroo.net/index.php?q=aHR0cDovL3VwbG9hZC53aWtpbWVkaWEub3JnL3dpa2lwZWRpYS9jb21tb25zL3RodW1iLzEvMWEvQm9sbGluZ2VyQmFuZHNTUFguc3ZnLzEyMHB4LUJvbGxpbmdlckJhbmRzU1BYLnN2Zy5wbmc"/> [2]
+<img src="http://www.wikizeroo.net/index.php?q=aHR0cDovL3VwbG9hZC53aWtpbWVkaWEub3JnL3dpa2lwZWRpYS9jb21tb25zL3RodW1iLzEvMWEvQm9sbGluZ2VyQmFuZHNTUFguc3ZnLzEyMHB4LUJvbGxpbmdlckJhbmRzU1BYLnN2Zy5wbmc"/> [3]
 
-RSI(Relative Strength Index) is also another technical indicator which can contribute pattern recognition. The relative strength index was developed by J. Welles Wilder and published in a 1978 book, New Concepts in Technical Trading Systems, and in Commodities magazine (now Futures magazine) in the June 1978 issue.[3] It has become one of the most popular oscillator indices.[4]
+RSI(Relative Strength Index) is also another technical indicator which can contribute pattern recognition. The relative strength index was developed by J. Welles Wilder and published in a 1978 book, New Concepts in Technical Trading Systems, and in Commodities magazine (now Futures magazine) in the June 1978 issue.[4] It has become one of the most popular oscillator indices.[5]
 
 #### 2- Data Exploration and Normalization
 
