@@ -34,6 +34,7 @@ General Rules in Volume Analysis:
 
 
 
+
 <table align="center"> 
   <th>Volume</th><th>Price</th><th>Interpretation</th>
   <tr><td>Increasing</td><td>Rising</td><td>bullish</td></tr>
