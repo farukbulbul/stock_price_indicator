@@ -31,6 +31,9 @@ I will use 13 different stocks' historical stock prices saved to data folder of 
 
 In the csv files cloumns are: Date, Open, High, Low, Close, Adjusted Close, Volume. The date column will be necessary for retrieving 5 or 10 previous days of requested date adjusted close price prediction. If close, adjusted close price of a stock is greater than open price it clearly shows a bullish market rather than a bearish one. So relations between open price and close price will be very important for predicting the requested days adjusted close price. Also volume is very important since volume reflects the intensity (strength) of a stock. Volume also provides an indication of the quality of a price trend and the liquidity of a stock. A trend analysis can be done with volume and price like in the below table [1].
 General Rules in Volume Analysis:
+
+
+
 <table align="center"> 
   <th>Volume</th><th>Price</th><th>Interpretation</th>
   <tr><td>Increasing</td><td>Rising</td><td>bullish</td></tr>
