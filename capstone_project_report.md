@@ -1,7 +1,7 @@
 # Machine Learning Engineer Nanodegree
-## Capstone Project
+## Capstone Project: Stock Price Indicator
 Ömer Faruk BÜLBÜL  
-March 2nd, 2019
+June 22nd, 2019
 
 ## I. Definition
 _(approx. 1-2 pages)_
@@ -10,6 +10,25 @@ _(approx. 1-2 pages)_
 In this section, look to provide a high-level overview of the project in layman’s terms. Questions to ask yourself when writing this section:
 - _Has an overview of the project been provided, such as the problem domain, project origin, and related datasets or input data?_
 - _Has enough background information been given so that an uninformed reader would understand the problem domain and following problem statement?_
+
+Investment firms, hedge funds and even individuals have been using financial models to better understand market behaviour and make profitable investments and trades. 
+
+The Effects of Psychology on Individual Investors’ Behaviors:
+Evidence from the Vietnam Stock Exchange 
+
+
+
+A wealth of information is available in the form of historical stock prices and company performance data, suitable for machine learning algorithms to process.
+
+Since finance area dynamics are very complex and stock prices depend on so many factors, machine learning can be a good solution if a suitable subset of these factors is selected and a reasonable performance is targeted.
+
+There are many successful implementations to make an estimator for stock prices one of which creates a framework with neural networks and decision forests.[1] In their "A machine learning based stock trading framework using technical and economic analysis" work they have managed to beat S&P500 Index by far according to charts provided.
+
+
+
+
+
+In this project I will try to investigate prediction success of close price of stocks given 5 or 10 days previous stock market data with a trained machine learning algorithm which is trained with a dataset set described below.
 
 
 
@@ -127,7 +146,7 @@ In this section, you will need to provide discussion as to how one aspect of the
 - Is the code that implements your solution easily readable and properly commented?
 - Does the code execute without error and produce results similar to those reported?
 
-
+[1] A machine learning based stock trading framework using technical and economic analysis http://cs229.stanford.edu/proj2017/final-reports/5234854.pdf
 
 
 linear_rmse	linear_r2	svm_linear_rmse	svm_linear_r2	svm_polynomial_rmse	svm_polynomial_r2	lstm_rmse	lstm_r2
