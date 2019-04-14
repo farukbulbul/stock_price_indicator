@@ -5,3 +5,5 @@ pandas-datareader
 matplotlib
 scikit-learn
 jupyter
+tensorflow
+keras
