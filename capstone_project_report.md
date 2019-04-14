@@ -1,7 +1,7 @@
 # Machine Learning Engineer Nanodegree
 ## Capstone Project
-Joe Udacity  
-December 31st, 2050
+Ömer Faruk BÜLBÜL  
+March 2nd, 2019
 
 ## I. Definition
 _(approx. 1-2 pages)_
@@ -10,6 +10,9 @@ _(approx. 1-2 pages)_
 In this section, look to provide a high-level overview of the project in layman’s terms. Questions to ask yourself when writing this section:
 - _Has an overview of the project been provided, such as the problem domain, project origin, and related datasets or input data?_
 - _Has enough background information been given so that an uninformed reader would understand the problem domain and following problem statement?_
+
+
+
 
 ### Problem Statement
 In this section, you will want to clearly define the problem that you are trying to solve, including the strategy (outline of tasks) you will use to achieve the desired solution. You should also thoroughly discuss what the intended solution will be for this problem. Questions to ask yourself when writing this section:
@@ -123,3 +126,37 @@ In this section, you will need to provide discussion as to how one aspect of the
 - Are all the resources used for this project correctly cited and referenced?
 - Is the code that implements your solution easily readable and properly commented?
 - Does the code execute without error and produce results similar to those reported?
+
+
+
+
+linear_rmse	linear_r2	svm_linear_rmse	svm_linear_r2	svm_polynomial_rmse	svm_polynomial_r2	lstm_rmse	lstm_r2
+2.192528	0.998134	2.004182	0.99844	0.839159	0.999727	6.9289	0.981359
+7.805897	0.999726	5.369823	0.999871	6.121477	0.999832	25.304551	0.997126
+2.037792	0.999393	1.878048	0.999484	1.024915	0.999846	4.122919	0.997514
+0.373997	0.998415	0.318431	0.998851	0.180695	0.99963	0.946034	0.989856
+0.922202	0.999698	0.537153	0.999898	0.381595	0.999948	1.961162	0.998634
+0.501376	0.999621	0.354377	0.999811	0.268849	0.999891	1.408609	0.997009
+1.319128	0.999684	0.274242	0.999986	0.400191	0.999971	3.076882	0.998283
+0.70635	0.9982	0.659137	0.998432	0.438073	0.999308	6.199673	0.861317
+0.261775	0.999008	0.242498	0.999149	0.174377	0.99956	2.330596	0.921378
+0.781117	0.992585	0.72915	0.993539	0.483466	0.997159	4.308404	0.774404
+0.757133	0.999201	0.565553	0.999554	0.402025	0.999775	1.444661	0.997091
+0.594605	0.99975	0.413177	0.999879	0.258257	0.999953	1.486428	0.99844
+0.846397	0.996935	0.77153	0.997453	0.383184	0.999372	2.377591	0.975812
+							
+linear_rmse	linear_r2	svm_linear_rmse	svm_linear_r2	svm_polynomial_rmse	svm_polynomial_r2	lstm_rmse	lstm_r2
+2.120015	0.998255	2.004182	0.99844	0.839159	0.999727	7.67189	0.977147
+8.308104	0.99969	5.369823	0.999871	6.121477	0.999832	22.541021	0.997719
+2.027183	0.999399	1.878048	0.999484	1.024915	0.999846	4.654158	0.996832
+0.368127	0.998464	0.318431	0.998851	0.180695	0.99963	1.20297	0.983598
+0.963566	0.99967	0.537153	0.999898	0.381595	0.999948	3.019329	0.996763
+0.502139	0.99962	0.354377	0.999811	0.268849	0.999891	1.064994	0.99829
+1.31664	0.999686	0.274242	0.999986	0.400191	0.999971	2.965975	0.998404
+0.652179	0.998465	0.659137	0.998432	0.438073	0.999308	6.336198	0.855142
+0.263022	0.998999	0.242498	0.999149	0.174377	0.99956	3.31033	0.841382
+0.841118	0.991402	0.72915	0.993539	0.483466	0.997159	3.840367	0.820756
+0.703717	0.99931	0.565553	0.999554	0.402025	0.999775	1.228029	0.997898
+0.59493	0.99975	0.413177	0.999879	0.258257	0.999953	1.60534	0.99818
+0.848118	0.996922	0.77153	0.997453	0.383184	0.999372	1.98252	0.983183
+
