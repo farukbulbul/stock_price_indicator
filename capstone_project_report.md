@@ -48,6 +48,7 @@ In this section, you will need to clearly define the metrics or calculations you
 
 I would like to use R2 and RMSE(root mean squared error) for evaluation metrics which are frequently used for estimation error calculations.
 With the following formulas:
+
 <img src="https://veribilimcisi.files.wordpress.com/2017/07/83buy.png"/>
 
 
