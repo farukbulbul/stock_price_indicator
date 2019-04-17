@@ -26,9 +26,7 @@ Performance in numbers – AI/Machine Learning Hedge Fund Index vs. quants and t
 
 <img src="https://qph.fs.quoracdn.net/main-qimg-5f73a8506b883839c392403cb592f657-c" />
 
-Similarly I would like to implement a stock price indicator with machine learning methodologies aiming to predict future stock price for a given stock.
-
-
+With the information provided by Eurekahedge it is clear that machine learning algorithms are very usefull for constructing successfull investment strategies. Similarly I would like to implement a stock price indicator with machine learning methodologies aiming to predict future stock price for a given stock. 
 
 
 ### Problem Statement
@@ -36,6 +34,16 @@ In this section, you will want to clearly define the problem that you are trying
 - _Is the problem statement clearly defined? Will the reader understand what you are expecting to solve?_
 - _Have you thoroughly discussed how you will attempt to solve the problem?_
 - _Is an anticipated solution clearly defined? Will the reader understand what results you are looking for?_
+
+The problem is predicting the actual value of adjusted close price of a requested stock for a requested day with 5-10 days of previous data in the form of average values provided.
+
+For this project, I will try to build a stock price predictor that takes daily trading data over 5 or 10 days as input of requested stock, and outputs projected estimates for given query dates. The predictor given open price(open), highest price(highest), volume, adjusted close price(adjusted close) will only predict Adjusted Close price for a given stock. The predicted value can easily be compared and a benchmark can easily be set up with actual adjusted price of the requested date for various dates upon request.
+
+Since we are trying to predict a value this problem is a regression problem. We take historical stock market values and try to predict adjusted close price of the stock. We will be constructing several predictive models which investigates the relationship between a dependent (target) and independent variable (s) (predictor). We will try to forecast, time series modeling and finding the causal effect relationship between the variables.
+
+<img src="https://i.hizliresim.com/16XqkB.jpg">
+
+
 
 ### Metrics
 In this section, you will need to clearly define the metrics or calculations you will use to measure performance of a model or result in your project. These calculations and metrics should be justified based on the characteristics of the problem and problem domain. Questions to ask yourself when writing this section:
