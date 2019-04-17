@@ -4,9 +4,9 @@
 June 22nd, 2019
 
 ## I. Definition
-_(approx. 1-2 pages)_
 
 ### Project Overview
+
 Investment firms, hedge funds and even individuals have been using financial models to better understand market behaviour and make profitable investments and trades. Since investor behaviour often deviates from logic and reason, and investors display many behaviour biases that influence their investment decision-making processes[1], it is important to construct an investment strategy in terms of strict algorithmic rules. 
 
 Financial modeling is the task of building an abstract representation (a model) of a real world financial situation.[2] This is a mathematical model designed to represent (a simplified version of) the performance of a financial asset or portfolio of a business, project, or any other investment. Realistic financial models which require great effort are than used by financial analysts to anticipate the impact of an economic policy change or any other event on a company's stock to predict the future price of the stock. In quantitative finance, financial modeling entails the development of a sophisticated mathematical model. Models here deal with asset prices, market movements, portfolio returns and the like.
@@ -30,10 +30,6 @@ With the information provided by Eurekahedge it is clear that machine learning a
 
 
 ### Problem Statement
-In this section, you will want to clearly define the problem that you are trying to solve, including the strategy (outline of tasks) you will use to achieve the desired solution. You should also thoroughly discuss what the intended solution will be for this problem. Questions to ask yourself when writing this section:
-- _Is the problem statement clearly defined? Will the reader understand what you are expecting to solve?_
-- _Have you thoroughly discussed how you will attempt to solve the problem?_
-- _Is an anticipated solution clearly defined? Will the reader understand what results you are looking for?_
 
 The problem is predicting the actual value of adjusted close price of a requested stock for a requested day with 5-10 days of previous data in the form of average values provided.
 
@@ -42,9 +38,6 @@ For this project, I will try to build a stock price predictor that takes daily t
 Since we are trying to predict a value this problem is a regression problem. We take historical stock market values and try to predict adjusted close price of the stock. We will be constructing several predictive models which investigates the relationship between a dependent (target) and independent variable (s) (predictor). We will try to forecast, time series modeling and finding the causal effect relationship between the variables.
 
 ### Metrics
-In this section, you will need to clearly define the metrics or calculations you will use to measure performance of a model or result in your project. These calculations and metrics should be justified based on the characteristics of the problem and problem domain. Questions to ask yourself when writing this section:
-- _Are the metrics you’ve chosen to measure the performance of your models clearly discussed and defined?_
-- _Have you provided reasonable justification for the metrics chosen based on the problem and solution?_
 
 I would like to use R2 and RMSE(root mean squared error) for evaluation metrics which are frequently used for estimation error calculations.
 With the following formulas:
@@ -53,10 +46,9 @@ With the following formulas:
 
 <img src="https://cdn-images-1.medium.com/max/800/1*d7IVANCDovpXKP5N0rR2Yg.png"/>
 
-We will look at the deviation by calculating the RMSE of the model. If the deviation is big RMSE score will be far away from 0. For a regression with an intercept, 𝑅2 is between 0 and 1, and from its definition 𝑅2=1−𝑆𝑆𝐸/𝑇𝑆𝑆 we can find an interpretation: 𝑆𝑆𝐸/𝑇𝑆𝑆 is the sum of squared errors divided by the total sum of squares, so it is the fraction ot the total sum of squares that is contained in the error term. So one minus this is the fraction of the total sum of squares that is not in the error, or 𝑅2 is the fraction of the total sum of squares that is 'explained by' the regression.
+We will look at the deviation by calculating the RMSE of the model. If the deviation is big RMSE score will be far away from 0. Simply put, the lower the value the better and 0 means the model is perfect. Since we do not want high deviation for our predictions we would like to have RMSE score near to 0.
 
-
-
+For a regression with an intercept, 𝑅2 is between 0 and 1, and from its definition 𝑅2=1−𝑆𝑆𝐸/𝑇𝑆𝑆 we can find an interpretation: 𝑆𝑆𝐸/𝑇𝑆𝑆 is the sum of squared errors divided by the total sum of squares, so it is the fraction ot the total sum of squares that is contained in the error term. So one minus this is the fraction of the total sum of squares that is not in the error, or 𝑅2 is the fraction of the total sum of squares that is 'explained by' the regression.
 
 
 ## II. Analysis
@@ -68,6 +60,74 @@ In this section, you will be expected to analyze the data you are using for the 
 - _If a dataset is present for this problem, are statistics about the dataset calculated and reported? Have any relevant results from this calculation been discussed?_
 - _If a dataset is **not** present for this problem, has discussion been made about the input space or input data for your problem?_
 - _Are there any abnormalities or characteristics about the input space or dataset that need to be addressed? (categorical variables, missing values, outliers, etc.)_
+
+I used 13 different stocks' historical stock prices saved to "data" folder of this project. Each file is in the csv format and containing approximately 9 years of historical stock market data. Data saved are from Yahoo Finance website with python code and open to public use. The symbols of the stocks in alphabetical order is: AAPL, AMZN, AVGO, CSCO, MA, MSFT, NVDA, NVS, PFE, QCOM, TXN, V, WNT. Historical Data of stock prices can be easily gathered using https://pypi.org/project/yahoo-finance/ project or pandas data reader commented in first code cell of the project.
+
+In the csv files columns are: 
+1- Date: The date which market was open and stock is exchanged.
+2- Open: The price which first transaction of the day was occured.
+3- High: Highest price of the day
+4- Low: Lowest price of the day
+5- Close: The price which last transaction occured.
+6- Adjusted Close: The adjusted closing price is a useful tool when examining historical returns because it gives analysts an accurate representation of the firm's equity value beyond the simple market price. It accounts for all corporate actions such as stock splits, dividends/distributions and rights offerings.
+7- Volume: The number of shares that changed hands during a given day.  
+
+In order to have good predictions we need to get trend of the stock market. If close, adjusted close price of a stock is greater than open price it clearly shows a bullish market rather than a bearish one. So relations between open price and close price will be very important for predicting the requested days adjusted close price. Also volume is very important since volume reflects the intensity (strength) of a stock. Volume also provides an indication of the quality of a price trend and the liquidity of a stock. Highest price and lowest price values when compared to open price and close price are used to interpret trend of the stock by financers.
+A trend analysis can be done with volume and price like in the below table [4].
+General Rules in Volume Analysis:
+
+<table align="center"> 
+  <th>Volume</th><th>Price</th><th>Interpretation</th>
+  <tr><td>Increasing</td><td>Rising</td><td>bullish</td></tr>
+  <tr><td>Decreasing</td><td>Falling</td><td>bullish</td></tr>
+  <tr><td>Increasing</td><td>Falling</td><td>bearish</td></tr>
+  <tr><td>Decreasing</td><td>Rising</td><td>bearish</td></tr>
+</table>
+
+Here is an example of data structure:
+
+<table>
+      <thead>
+        <tr>
+            <th>Date</th>
+            <th>Open</th>
+            <th>High</th>
+            <th>Low</th>
+            <th>Close</th>
+            <th>Adj Close</th>
+            <th>Volume</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td>2019-01-28</td>
+              <td>155.789993</td>
+              <td>156.330002</td>
+              <td>153.660004</td>
+              <td>156.300003</td>
+              <td>155.632523</td>
+              <td>26192100</td>
+          </tr>
+        <tr>
+              <td>2019-01-29</td>
+              <td>156.250000</td>
+              <td>158.130005</td>
+              <td>154.110001</td>
+              <td>154.679993</td>
+              <td>154.019440</td>
+              <td>41587200</td>
+          </tr>
+          <tr>
+              <td>2019-01-30</td>
+              <td>163.250000</td>
+              <td>166.149994</td>
+              <td>160.229996</td>
+              <td>165.250000</td>
+              <td>164.544296</td>
+              <td>61109800</td>
+          </tr>
+  </tbody>
+</table>
 
 ### Exploratory Visualization
 In this section, you will need to provide some form of visualization that summarizes or extracts a relevant characteristic or feature about the data. The visualization should adequately support the data being used. Discuss why this visualization was chosen and how it is relevant. Questions to ask yourself when writing this section:
@@ -161,11 +221,13 @@ In this section, you will need to provide discussion as to how one aspect of the
 - Does the code execute without error and produce results similar to those reported?
 
 
+
 [1] The Effects of Psychology on Individual Investors’ Behaviors: Evidence from the Vietnam Stock Exchange
 http://www.ccsenet.org/journal/index.php/jms/article/download/39897/22142
 [2] http://www.investopedia.com/terms/f/financialmodeling.asp
 [3] A machine learning based stock trading framework using technical and economic analysis
 http://cs229.stanford.edu/proj2017/final-reports/5234854.pdf
+[4] Trading volume: What it reveals about the market from https://www.rediff.com/money/special/trading-volume-what-it-reveals-about-the-market/20090703.htm
 
 linear_rmse	linear_r2	svm_linear_rmse	svm_linear_r2	svm_polynomial_rmse	svm_polynomial_r2	lstm_rmse	lstm_r2
 2.192528	0.998134	2.004182	0.99844	0.839159	0.999727	6.9289	0.981359
