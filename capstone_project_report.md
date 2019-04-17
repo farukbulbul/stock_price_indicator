@@ -26,12 +26,7 @@ Performance in numbers – AI/Machine Learning Hedge Fund Index vs. quants and t
 
 <img src="https://qph.fs.quoracdn.net/main-qimg-5f73a8506b883839c392403cb592f657-c" />
 
-
-
-
-
-
-In this project I will try to investigate prediction success of close price of stocks given 5 or 10 days previous stock market data with a trained machine learning algorithm which is trained with a dataset set described below.
+Similarly I would like to implement a stock price indicator with machine learning methodologies aiming to predict future stock price for a given stock.
 
 
 
