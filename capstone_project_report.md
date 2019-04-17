@@ -51,19 +51,9 @@ With the following formulas:
 
 <img src="https://veribilimcisi.files.wordpress.com/2017/07/83buy.png"/>
 
+<img src="https://cdn-images-1.medium.com/max/800/1*d7IVANCDovpXKP5N0rR2Yg.png"/>
 
-
-
-
-Assume that you have 𝑛 observations 𝑦𝑖 and that you have an estimator that estimates the values 𝑦̂ 𝑖.
-
-The mean squared error is 𝑀𝑆𝐸=1𝑛∑𝑛𝑖=1(𝑦𝑖−𝑦̂ 𝑖)2, the root mean squared error is the square root thus 𝑅𝑀𝑆𝐸=𝑀𝑆𝐸‾‾‾‾‾‾√.
-
-The 𝑅2 is equal to 𝑅2=1−𝑆𝑆𝐸𝑇𝑆𝑆 where 𝑆𝑆𝐸 is the sum of squared errors or 𝑆𝑆𝐸=∑𝑛𝑖=1(𝑦𝑖−𝑦̂ 𝑖)2), and by definition this is equal to 𝑆𝑆𝐸=𝑛×𝑀𝑆𝐸.
-
-The 𝑇𝑆𝑆 is the total sum of squares and is equal to 𝑇𝑆𝑆=∑𝑛𝑖=1(𝑦𝑖−𝑦¯)2, where 𝑦¯=1𝑛∑𝑛𝑖=1𝑦𝑖. So 𝑅2=1−𝑛×𝑀𝑆𝐸∑𝑛𝑖=1(𝑦𝑖−𝑦¯)2.
-
-For a regression with an intercept, 𝑅2 is between 0 and 1, and from its definition 𝑅2=1−𝑆𝑆𝐸𝑇𝑆𝑆 we can find an interpretation: 𝑆𝑆𝐸𝑇𝑆𝑆 is the sum of squared errors divided by the total sum of squares, so it is the fraction ot the total sum of squares that is contained in the error term. So one minus this is the fraction of the total sum of squares that is not in the error, or 𝑅2 is the fraction of the total sum of squares that is 'explained by' the regression.
+We will look at the deviation by calculating the RMSE of the model. If the deviation is big RMSE score will be far away from 0. For a regression with an intercept, 𝑅2 is between 0 and 1, and from its definition 𝑅2=1−𝑆𝑆𝐸/𝑇𝑆𝑆 we can find an interpretation: 𝑆𝑆𝐸/𝑇𝑆𝑆 is the sum of squared errors divided by the total sum of squares, so it is the fraction ot the total sum of squares that is contained in the error term. So one minus this is the fraction of the total sum of squares that is not in the error, or 𝑅2 is the fraction of the total sum of squares that is 'explained by' the regression.
 
 
 
