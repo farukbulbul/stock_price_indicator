@@ -41,7 +41,7 @@ For this project, I will try to build a stock price predictor that takes daily t
 
 Since we are trying to predict a value this problem is a regression problem. We take historical stock market values and try to predict adjusted close price of the stock. We will be constructing several predictive models which investigates the relationship between a dependent (target) and independent variable (s) (predictor). We will try to forecast, time series modeling and finding the causal effect relationship between the variables.
 
-<img src="https://i.hizliresim.com/16XqkB.jpg">
+<img src="http://i.hizliresim.com/16XqkB.jpg">
 
 
 
