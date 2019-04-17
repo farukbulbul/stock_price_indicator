@@ -7,22 +7,25 @@ June 22nd, 2019
 _(approx. 1-2 pages)_
 
 ### Project Overview
-In this section, look to provide a high-level overview of the project in layman’s terms. Questions to ask yourself when writing this section:
-- _Has an overview of the project been provided, such as the problem domain, project origin, and related datasets or input data?_
-- _Has enough background information been given so that an uninformed reader would understand the problem domain and following problem statement?_
+Investment firms, hedge funds and even individuals have been using financial models to better understand market behaviour and make profitable investments and trades. Since investor behaviour often deviates from logic and reason, and investors display many behaviour biases that influence their investment decision-making processes[1], it is important to construct an investment strategy in terms of strict algorithmic rules. 
 
-Investment firms, hedge funds and even individuals have been using financial models to better understand market behaviour and make profitable investments and trades. 
+Financial modeling is the task of building an abstract representation (a model) of a real world financial situation.[2] This is a mathematical model designed to represent (a simplified version of) the performance of a financial asset or portfolio of a business, project, or any other investment. Realistic financial models which require great effort are than used by financial analysts to anticipate the impact of an economic policy change or any other event on a company's stock to predict the future price of the stock. In quantitative finance, financial modeling entails the development of a sophisticated mathematical model. Models here deal with asset prices, market movements, portfolio returns and the like.
 
-The Effects of Psychology on Individual Investors’ Behaviors:
-Evidence from the Vietnam Stock Exchange 
+There are so many factors involved in the prediction – physical factors vs. physhological, rational and irrational behaviour, etc. All these aspects combine to make share prices volatile and very difficult to predict with a high degree of accuracy. Since finance area dynamics are very complex and stock prices depend on so many factors, machine learning can be a good solution if a suitable subset of these factors is selected and a reasonable performance is targeted. A wealth of information is available in the form of historical stock prices and company performance data, suitable for machine learning algorithms to process for constructing a financial model predicting the stock price of companies. There are lots of websites and web services for gathering historical stock price and financial performance data including Yahoo Finance, Google Finance etc. 
 
+There are many successful implementations to make an estimator for stock prices using machine learning methods like linear regression, svm, lstm, arima etc. one of which creates a framework with neural networks and decision forests.[3] In their "A machine learning based stock trading framework using technical and economic analysis" work they have managed to beat S&P500 Index by far according to charts provided.
 
+Hedge fund research firm Eurekahedge has published some informative data. The chart below displays the performance of the Eurekahedge AI/Machine Learning Hedge Fund Index vs. traditional quant and hedge funds from 2010 to 2016. The Index tracks 23 funds in total, of which 12 continue to be live.
 
-A wealth of information is available in the form of historical stock prices and company performance data, suitable for machine learning algorithms to process.
+<img src="https://qph.fs.quoracdn.net/main-qimg-41c3e97fa1fb39c693d6970ea612c8bd" />
 
-Since finance area dynamics are very complex and stock prices depend on so many factors, machine learning can be a good solution if a suitable subset of these factors is selected and a reasonable performance is targeted.
+With following table provided, Eurekahedge notes that:
 
-There are many successful implementations to make an estimator for stock prices one of which creates a framework with neural networks and decision forests.[1] In their "A machine learning based stock trading framework using technical and economic analysis" work they have managed to beat S&P500 Index by far according to charts provided.
+“AI/machine learning hedge funds have outperformed both traditional quants and the average hedge fund since 2010, delivering annualized returns of 8.44% over this period compared with 2.62%, 1.62% and 4.27% for CTA’s, trend-followers and the average global hedge fund respectively.”
+Performance in numbers – AI/Machine Learning Hedge Fund Index vs. quants and traditional hedge funds
+
+<img src="https://qph.fs.quoracdn.net/main-qimg-5f73a8506b883839c392403cb592f657-c" />
+
 
 
 
@@ -146,8 +149,12 @@ In this section, you will need to provide discussion as to how one aspect of the
 - Is the code that implements your solution easily readable and properly commented?
 - Does the code execute without error and produce results similar to those reported?
 
-[1] A machine learning based stock trading framework using technical and economic analysis http://cs229.stanford.edu/proj2017/final-reports/5234854.pdf
 
+[1] The Effects of Psychology on Individual Investors’ Behaviors: Evidence from the Vietnam Stock Exchange
+http://www.ccsenet.org/journal/index.php/jms/article/download/39897/22142
+[2] http://www.investopedia.com/terms/f/financialmodeling.asp
+[3] A machine learning based stock trading framework using technical and economic analysis
+http://cs229.stanford.edu/proj2017/final-reports/5234854.pdf
 
 linear_rmse	linear_r2	svm_linear_rmse	svm_linear_r2	svm_polynomial_rmse	svm_polynomial_r2	lstm_rmse	lstm_r2
 2.192528	0.998134	2.004182	0.99844	0.839159	0.999727	6.9289	0.981359
