@@ -216,10 +216,9 @@ In this section, you will need to discuss the process of improvement you made up
 - _Is the process of improvement clearly documented, such as what techniques were used?_
 - _Are intermediate and final solutions clearly reported as the process is improved?_
 
-Here is an initial solution result for the problem. It is clear that RMSE namely deviation of the error depends on the value of the price so I decided to normalize the adj. close value and than run the solution again.
-
-
-
+Here is an initial solution result for the problem. It is clear that RMSE namely deviation of the error depends on the value of the price so I decided to normalize the adj. close value and than run the solution again. It is clear that stocks with heigher prices rmse scores reduced and rmse values approached to each other.
+<img src="https://github.com/farukbulbul/stock_price_indicator/blob/master/images/non-normalized-100-1000.png" width="50%" height="50%"/>
+<img src="https://github.com/farukbulbul/stock_price_indicator/blob/master/images/normalized-100-1000.png" width="50%" height="50%"/>
 
 
 
