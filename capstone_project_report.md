@@ -217,9 +217,6 @@ In this section, you will need to discuss the process of improvement you made up
 - _Are intermediate and final solutions clearly reported as the process is improved?_
 
 Here is an initial solution result for the problem. It is clear that RMSE namely deviation of the error depends on the value of the price so I decided to normalize the adj. close value and than run the solution again. It is clear that stocks with heigher prices rmse scores reduced and rmse values approached to each other.
-
-
-
 <table>
       <tbody>
           <tr>
@@ -230,7 +227,7 @@ Here is an initial solution result for the problem. It is clear that RMSE namely
         </tr>
   </tbody>
 </table>
-
+I than tried having two layers of lstm of 10 nodes to have better reults but it ended in a slightly worse result. Also trying tanh and softmax functions ended in local minimas having poor results.
 
 
 ## IV. Results
