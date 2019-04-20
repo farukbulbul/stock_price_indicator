@@ -55,11 +55,6 @@ For a regression with an intercept, 𝑅2 is between 0 and 1, and from its defin
 _(approx. 2-4 pages)_
 
 ### Data Exploration
-In this section, you will be expected to analyze the data you are using for the problem. This data can either be in the form of a dataset (or datasets), input data (or input files), or even an environment. The type of data should be thoroughly described and, if possible, have basic statistics and information presented (such as discussion of input features or defining characteristics about the input or environment). Any abnormalities or interesting qualities about the data that may need to be addressed have been identified (such as features that need to be transformed or the possibility of outliers). Questions to ask yourself when writing this section:
-- _If a dataset is present for this problem, have you thoroughly discussed certain features about the dataset? Has a data sample been provided to the reader?_
-- _If a dataset is present for this problem, are statistics about the dataset calculated and reported? Have any relevant results from this calculation been discussed?_
-- _If a dataset is **not** present for this problem, has discussion been made about the input space or input data for your problem?_
-- _Are there any abnormalities or characteristics about the input space or dataset that need to be addressed? (categorical variables, missing values, outliers, etc.)_
 
 I used 13 different stocks' historical stock prices saved to "data" folder of this project. Each file is in the csv format and containing approximately 9 years of historical stock market data. Data saved are from Yahoo Finance website with python code and open to public use. The symbols of the stocks in alphabetical order is: AAPL, AMZN, AVGO, CSCO, MA, MSFT, NVDA, NVS, PFE, QCOM, TXN, V, WNT. Historical Data of stock prices can be easily gathered using https://pypi.org/project/yahoo-finance/ project or pandas data reader commented in first code cell of the project.
 
@@ -138,25 +133,45 @@ In cell 4 I added frequetly used trend analysis formulas to the data as addition
 <img src="https://github.com/farukbulbul/stock_price_indicator/blob/master/microsoft_plot.png"/>
 
 ### Algorithms and Techniques
-In this section, you will need to discuss the algorithms and techniques you intend to use for solving the problem. You should justify the use of each one based on the characteristics of the problem and the problem domain. Questions to ask yourself when writing this section:
-- _Are the algorithms you will use, including any default variables/parameters in the project clearly defined?_
-- _Are the techniques to be used thoroughly discussed and justified?_
-- _Is it made clear how the input data or datasets will be handled by the algorithms and techniques chosen?_
+
+So we have timeseries data that we would like to have a regression and predict adjusted close price of the next market day.
+So we have lots of methodologies we could apply to the problem. Namely, we can apply simple linear regression, support vector machines regression algorithms, logistic regression, multiple regression algortihm, long short term memory(LSTM) regression etc.
+
+For the project I chose following techniques to tackle the problem:
+
+1- SVM Linear/Polynomial Regression: 
+This supervised machine learning algorithm has strong regularization and can be leveraged both for classification or regression challenges. They are characterized by usage of kernels, the sparseness of the solution and the capacity control gained by acting on the margin, or on number of support vectors, etc. The capacity of the system is controlled by parameters that do not depend on the dimensionality of feature space. Since the SVM algorithm operates natively on numeric attributes, it uses a z-score normalization on numeric attributes. In regression, Support Vector Machines algorithms use epsilon-insensitivity (margin of tolerance) loss function to solve regression problems.
+Support vector machines regression algorithms has found several applications in the oil and gas industry, classification of images and text and hypertext categorization. In the oilfields, it is specifically leveraged for exploration to understand the position of layers of rocks and create 2D and 3D models as a representation of the subsoil.
+I chose error penalty coefficient C as 100 for both linear and polynomial regressors. For the polynomial regressor I chose gamma as auto mode, polynomial degree as 3 and epsilon as 0.1.
+
+2- LSTM: 
+LSTM networks are well-suited to classifying, processing and making predictions based on time series data, since there can be lags of unknown duration between important events in a time series. LSTMs were developed to deal with the exploding and vanishing gradient problems that can be encountered when training traditional RNNs. Relative insensitivity to gap length is an advantage of LSTM over RNNs, hidden Markov models and other sequence learning methods in numerous applications
+Since The Long Short-Term Memory recurrent neural network has the promise of learning long sequences of observations I chose it for using it as a regressor for a time period of approximately 9 years.
+I chose 100 nodes with dropout rate of 20% with activation linear and optimizer as rmrsprop.
 
 ### Benchmark
-In this section, you will need to provide a clearly defined benchmark result or threshold for comparing across performances obtained by your solution. The reasoning behind the benchmark (in the case where it is not an established result) should be discussed. Questions to ask yourself when writing this section:
-- _Has some result or value been provided that acts as a benchmark for measuring performance?_
-- _Is it clear how this result or value was obtained (whether by data or by hypothesis)?_
-
+As a benchmark for the problem, simple linear regression is a statistical method that enables users to summarise and study relationships between two continuous (quantitative) variables. Linear regression is a linear model wherein a model that assumes a linear relationship between the input variables (x) and the single output variable (y).
+Some of the most popular applications of Linear regression algorithm are in financial portfolio prediction, salary forecasting, real estate predictions and in traffic in arriving at ETAs.
+I have chosen simple linear regression method for benchmarking because it is the simplest method for regression. This benchmark is frequently used for regression problems. We know that R2 score will be very near to 1 when we have a good predictor for the problem. From the results very near to 1 at the end of the report we can say that a simple linear regression method is a challenging benchmark to be selected for the methods implemented. For the linear regression I chose learning rate as 0.2 having 10 nodes and 10 epochs.
 
 ## III. Methodology
-_(approx. 3-5 pages)_
 
 ### Data Preprocessing
-In this section, all of your preprocessing steps will need to be clearly documented, if any were necessary. From the previous section, any of the abnormalities or characteristics that you identified about the dataset will be addressed and corrected here. Questions to ask yourself when writing this section:
-- _If the algorithms chosen require preprocessing steps like feature selection or feature transformations, have they been properly documented?_
-- _Based on the **Data Exploration** section, if there were abnormalities or characteristics that needed to be addressed, have they been properly corrected?_
-- _If no preprocessing is needed, has it been made clear why?_
+For preprocessing data, I needed to eliminate NaN or null values, normalize, put additional frequently used trend analysis information methodologies in order to have a successfull learning. I have followed the following steps:
+
+1- Download data from Yahoo Finance servers with pandas datareader into 13 different pandas dataframes.
+2- Check for null values if there is any. I encountered no null values so I made no action for null values.
+3- Add MACD (Moving Average Convergence Divergence) Data for column Adjusted Close for every data frame for 26, 12 day periods. This is a very frequently used trend information.
+4- Add RSI(Relative Strength Index) for period 14 days.
+5- Add Bollinger Bands namely standard deviation margins informations in column up and low.
+6- Delete first 25 rows of every dataframe since we have added NaN values to newly added columns.
+7- Plot data with newly added information in order to check for any mistakes not confirming with data
+8- Normalize data with sklearn preprocessing minmaxscaler and multipy adjusted close with 100 to scale up to 100
+(I also tried without normalizing the adjusted column and saved results for that case)
+9- seperate y values column namely adjusted close price column from dataframes
+10- Shift backward 1 days y values dataframes since we are trying to predict (n+1)th day with nth day input
+11- Also for lstm network I needed to turn data into three dimensional array
+
 
 ### Implementation
 In this section, the process for which metrics, algorithms, and techniques that you implemented for the given data will need to be clearly documented. It should be abundantly clear how the implementation was carried out, and discussion should be made regarding any complications that occurred during this process. Questions to ask yourself when writing this section:
@@ -164,11 +179,51 @@ In this section, the process for which metrics, algorithms, and techniques that 
 - _Were there any complications with the original metrics or techniques that required changing prior to acquiring a solution?_
 - _Was there any part of the coding process (e.g., writing complicated functions) that should be documented?_
 
+I have used Jupyter Notebooks as development environment backed up with python 3.6 having numpy, scipy, pandas, pandas-datareader, matplotlib, scikit-learn, tensorflow, keras.
+
+After preprocessing the data I have done the following steps:
+
+1- Plan: 
+I have planned implentation in the following order as stated between code cell 6 and 7: Benchmark Model, RMSE and R2 Validation, Solution Model, Create Test Flow
+
+2- Create Benchmark Model: 
+I have selected simple linear regression for benchmarking. With Keras: The Python Deep Learning library it is very easy to implement a simple linear regression by adding a dense layer consisting of only 1 node with activation type of linear. With Stochastic gradient descent as optimizer with learning rate 0.2.
+
+3- Create Metrics
+I have chosen to use two metrics for comparing the results of learning techniques R2 and RMSE. These metrics are already provided by sklearn and I added a little informative lines to output stating method and score.
+
+4- Create Solution Models:
+In order to use in test flow I have implemented 3 methods returning models created.
+First method of support vector machine regressor is very straight forward with sklearn libraries having the option linear and penalty coefficient 100.
+todo: take screenshots
+
+Second method of SVM regressor has polynomial kernel and gamma is in auto mode with third degree polynomial fitting.
+
+
+Thirdly, I have created an lstm model having 100 nodes with dropout rate of 0.2 followed by a flattening layer and a dense layer of one node for final prediction.
+
+5- For test flow I wondered what will be the effect of using single model for 13 stocks and 13 diffrent models for each stock. So for the test flow I set a parameter for calling different models and single model.
+I simply created models, split data fit models, get predictions and than keep the r2, rmse scores after calling the check score.
+
+
+
+
+  
+
 ### Refinement
 In this section, you will need to discuss the process of improvement you made upon the algorithms and techniques you used in your implementation. For example, adjusting parameters for certain models to acquire improved solutions would fall under the refinement category. Your initial and final solutions should be reported, as well as any significant intermediate results as necessary. Questions to ask yourself when writing this section:
 - _Has an initial solution been found and clearly reported?_
 - _Is the process of improvement clearly documented, such as what techniques were used?_
 - _Are intermediate and final solutions clearly reported as the process is improved?_
+
+Here is an initial solution result for the problem. It is clear that RMSE namely deviation of the error depends on the value of the price so I decided to normalize the adj. close value and than run the solution again.
+
+
+
+
+
+
+
 
 
 ## IV. Results
@@ -231,33 +286,5 @@ http://www.ccsenet.org/journal/index.php/jms/article/download/39897/22142
 http://cs229.stanford.edu/proj2017/final-reports/5234854.pdf
 [4] Trading volume: What it reveals about the market from https://www.rediff.com/money/special/trading-volume-what-it-reveals-about-the-market/20090703.htm
 
-linear_rmse	linear_r2	svm_linear_rmse	svm_linear_r2	svm_polynomial_rmse	svm_polynomial_r2	lstm_rmse	lstm_r2
-2.192528	0.998134	2.004182	0.99844	0.839159	0.999727	6.9289	0.981359
-7.805897	0.999726	5.369823	0.999871	6.121477	0.999832	25.304551	0.997126
-2.037792	0.999393	1.878048	0.999484	1.024915	0.999846	4.122919	0.997514
-0.373997	0.998415	0.318431	0.998851	0.180695	0.99963	0.946034	0.989856
-0.922202	0.999698	0.537153	0.999898	0.381595	0.999948	1.961162	0.998634
-0.501376	0.999621	0.354377	0.999811	0.268849	0.999891	1.408609	0.997009
-1.319128	0.999684	0.274242	0.999986	0.400191	0.999971	3.076882	0.998283
-0.70635	0.9982	0.659137	0.998432	0.438073	0.999308	6.199673	0.861317
-0.261775	0.999008	0.242498	0.999149	0.174377	0.99956	2.330596	0.921378
-0.781117	0.992585	0.72915	0.993539	0.483466	0.997159	4.308404	0.774404
-0.757133	0.999201	0.565553	0.999554	0.402025	0.999775	1.444661	0.997091
-0.594605	0.99975	0.413177	0.999879	0.258257	0.999953	1.486428	0.99844
-0.846397	0.996935	0.77153	0.997453	0.383184	0.999372	2.377591	0.975812
-							
-linear_rmse	linear_r2	svm_linear_rmse	svm_linear_r2	svm_polynomial_rmse	svm_polynomial_r2	lstm_rmse	lstm_r2
-2.120015	0.998255	2.004182	0.99844	0.839159	0.999727	7.67189	0.977147
-8.308104	0.99969	5.369823	0.999871	6.121477	0.999832	22.541021	0.997719
-2.027183	0.999399	1.878048	0.999484	1.024915	0.999846	4.654158	0.996832
-0.368127	0.998464	0.318431	0.998851	0.180695	0.99963	1.20297	0.983598
-0.963566	0.99967	0.537153	0.999898	0.381595	0.999948	3.019329	0.996763
-0.502139	0.99962	0.354377	0.999811	0.268849	0.999891	1.064994	0.99829
-1.31664	0.999686	0.274242	0.999986	0.400191	0.999971	2.965975	0.998404
-0.652179	0.998465	0.659137	0.998432	0.438073	0.999308	6.336198	0.855142
-0.263022	0.998999	0.242498	0.999149	0.174377	0.99956	3.31033	0.841382
-0.841118	0.991402	0.72915	0.993539	0.483466	0.997159	3.840367	0.820756
-0.703717	0.99931	0.565553	0.999554	0.402025	0.999775	1.228029	0.997898
-0.59493	0.99975	0.413177	0.999879	0.258257	0.999953	1.60534	0.99818
-0.848118	0.996922	0.77153	0.997453	0.383184	0.999372	1.98252	0.983183
+
 
