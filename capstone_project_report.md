@@ -190,7 +190,7 @@ I have planned implentation in the following order as stated between code cell 6
 I have selected simple linear regression for benchmarking. With Keras: The Python Deep Learning library it is very easy to implement a simple linear regression by adding a dense layer consisting of only 1 node with activation type of linear. With Stochastic gradient descent as optimizer with learning rate 0.2.
 
 3- Create Metrics
-I have chosen to use two metrics for comparing the results of learning techniques R2 and RMSE. These metrics are already provided by sklearn and I added a little informative lines to output stating method and score.
+I have chosen to use two metrics for comparing the results of learning techniques R2 and RMSE. These metrics are already provided by sklearn and I added a little informative lines to print stating method and score.
 
 4- Create Solution Models:
 In order to use in test flow I have implemented 3 methods returning models created.
@@ -202,7 +202,7 @@ Second method of SVM regressor has polynomial kernel and gamma is in auto mode w
 
 Thirdly, I have created an lstm model having 100 nodes with dropout rate of 0.2 followed by a flattening layer and a dense layer of one node for final prediction.
 
-5- For test flow I wondered what will be the effect of using single model for 13 stocks and 13 diffrent models for each stock. So for the test flow I set a parameter for calling different models and single model.
+5- For test flow I wondered what will be the effect of using single model for 13 stocks and 13 diffreent models for each stock. So for the test flow I set a parameter for calling different models and single model.
 I simply created models, split data fit models, get predictions and than keep the r2, rmse scores after calling the check score.
 
 
@@ -227,11 +227,10 @@ Here is an initial solution result for the problem. It is clear that RMSE namely
         </tr>
   </tbody>
 </table>
-I than tried having two layers of lstm of 10 nodes to have better reults but it ended in a slightly worse result. Also trying tanh and softmax functions ended in local minimas having poor results.
+I than tried having two layers of lstm of 10 nodes to have better reults but it ended in a slightly worse result. Also trying tanh and softmax functions ended in local minimas having poor results. Since benchmark and lstm results are very near I stopped trying to make lstm results better.
 
 
 ## IV. Results
-_(approx. 2-3 pages)_
 
 ### Model Evaluation and Validation
 In this section, the final model and any supporting qualities should be evaluated in detail. It should be clear how the final model was derived and why this model was chosen. In addition, some type of analysis should be used to validate the robustness of this model and its solution, such as manipulating the input data or environment to see how the model’s solution is affected (this is called sensitivity analysis). Questions to ask yourself when writing this section:
@@ -239,6 +238,43 @@ In this section, the final model and any supporting qualities should be evaluate
 - _Has the final model been tested with various inputs to evaluate whether the model generalizes well to unseen data?_
 - _Is the model robust enough for the problem? Do small perturbations (changes) in training data or the input space greatly affect the results?_
 - _Can results found from the model be trusted?_
+
+As far as the methods I tried best performing method is SVR polynomial. This method has very good R2 mean for stocks which is 
+0.9995363077 and very near to 1. This indicates that this model can be definetly used as an estimator for stock prices given the supportive information extracted from the stock market prices.
+
+I was expecting better results in LSTM technique but SVR polynomial was better in results. In the next few weeks I will try configure a better LSTM network which can outperform SVR polynomial.
+
+For the SVR definetly polynomial kernel performs better than linear one and also it is better than the benchmark. I have added a grid search similar section at the end of bar charts for SMV polynomial solution configuration generating the following results. 
+For the C Value C = 50, 100, 200 vales are tried and following mean values are gathered. C=200 can be selected
+
+RMSE                    R2
+default    0.404407     default    0.999515
+c200       0.382911     c200       0.999563
+c50        0.436590     c50        0.999446
+
+For the gamma value gammma = 0.1, 0.2, 0.4, 0.8 values are tried and following results are gathered. gamma = 0.8 can be selected
+
+RMSE                            R2
+default            0.404407     default       0.999515
+c200               0.382911     c200          0.999563
+c50                0.436590     c50           0.999446
+gamma_dot2         0.364122     gamma_dot2    0.999605
+rmse_gamma_dot4    0.315261     gamma_dot4    0.999716
+
+
+default            0.404407
+c200               0.382911
+c50                0.436590
+gamma_dot2         0.364122
+rmse_gamma_dot8    0.315261
+degree4            0.280099
+
+default       0.999515
+c200          0.999563
+c50           0.999446
+gamma_dot2    0.999605
+gamma_dot8    0.999716
+degree4       0.999778
 
 ### Justification
 In this section, your model’s final solution and its results should be compared to the benchmark you established earlier in the project using some type of statistical analysis. You should also justify whether these results and the solution are significant enough to have solved the problem posed in the project. Questions to ask yourself when writing this section:
