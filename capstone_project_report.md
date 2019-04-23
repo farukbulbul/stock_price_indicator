@@ -281,7 +281,12 @@ In this section, your model’s final solution and its results should be compare
 - _Are the final results found stronger than the benchmark result reported earlier?_
 - _Have you thoroughly analyzed and discussed the final solution?_
 - _Is the final solution significant enough to have solved the problem?_
+When we compare benchmark and optimized SVR results it is clear that the performance of the SVR method is better than the 
+benchmark in terms of both R2 and RMSE metrics as seen below. There is a significant improvement at the RMSE metric which show the deviation of the solution is declined very much.
 
+RMSE                      R2
+best         0.280099     best         0.999778
+benchmark    0.810680     benchmark    0.998444
 
 ## V. Conclusion
 _(approx. 1-2 pages)_
