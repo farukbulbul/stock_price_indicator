@@ -263,6 +263,7 @@ For the gamma value gammma = 0.1, 0.2, 0.4, 0.8 values are tried and following r
 | rmse_gamma_dot4 |    0.315261  |   0.999716|
 
 For polynomial if we use degree 4 it gives better results.
+
 |         | RMSE     | R2       |
 |---------|----------|----------|
 |default |           0.404407 |  0.999515 |
