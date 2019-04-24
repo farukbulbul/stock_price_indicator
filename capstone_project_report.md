@@ -247,25 +247,20 @@ I was expecting better results in LSTM technique but SVR polynomial was better i
 For the SVR definetly polynomial kernel performs better than linear one and also it is better than the benchmark. I have added a grid search similar section at the end of bar charts for SMV polynomial solution configuration generating the following results. 
 For the C Value C = 50, 100, 200 vales are tried and following mean values are gathered. C=200 can be selected
 
-           RMSE         R2
-default    0.404407     0.999515
-c200       0.382911     0.999563
-c50        0.436590     0.999446
+|         | RMSE     | R2       |
+|---------|----------|----------|
+| default | 0.404407 | 0.999515 |
+| c200    | 0.382911 | 0.999563 |
+| c50     | 0.436590 | 0.999446 |
 
 
-|         | RMSE     | R2       |   |   |
-|---------|----------|----------|---|---|
-| default | 0.404407 | 0.999515 |   |   |
-| c200    | 0.382911 | 0.999563 |   |   |
-| c50     | 0.436590 | 0.999446 |   |   |
 For the gamma value gammma = 0.1, 0.2, 0.4, 0.8 values are tried and following results are gathered. gamma = 0.8 can be selected
 
-                   RMSE         R2
-default            0.404407     0.999515
-c200               0.382911     0.999563
-c50                0.436590     0.999446
-gamma_dot2         0.364122     0.999605
-rmse_gamma_dot4    0.315261     0.999716
+|         | RMSE     | R2       |
+|---------|----------|----------|
+| default |           0.404407 |     0.999515|
+| gamma_dot2 |         0.364122 |    0.999605|
+| rmse_gamma_dot4 |    0.315261  |   0.999716|
 
                    RMSE       R2
 default            0.404407   0.999515
