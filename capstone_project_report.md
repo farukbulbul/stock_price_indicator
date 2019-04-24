@@ -125,12 +125,12 @@ Here is an example of data structure:
 </table>
 
 Typically every dataframe(stock historical file) have more than 2000 rows. In cell 3 I checked if a null value was existing in the data but i could not found any, so I did not need to do anything to cover null values.
-<img src="https://github.com/farukbulbul/stock_price_indicator/blob/master/amzn_historicalPrice_statistics.png">
+<img src="https://github.com/farukbulbul/stock_price_indicator/blob/master/images/amzn_historicalPrice_statistics.png">
 
 ### Exploratory Visualization
 In cell 4 I added frequetly used trend analysis formulas to the data as additional columns in order to have better results and in cell 5 I plotted original adjusted close price, bollinger bands and weighted moving average calculated. We can consider bollinder bands as standard deviation margins from current price of the stock. Also moving averages provide trend information for the data.
 
-<img src="https://github.com/farukbulbul/stock_price_indicator/blob/master/microsoft_plot.png"/>
+<img src="https://github.com/farukbulbul/stock_price_indicator/blob/master/images/microsoft_plot.png"/>
 
 ### Algorithms and Techniques
 
@@ -174,10 +174,6 @@ For preprocessing data, I needed to eliminate NaN or null values, normalize, put
 
 
 ### Implementation
-In this section, the process for which metrics, algorithms, and techniques that you implemented for the given data will need to be clearly documented. It should be abundantly clear how the implementation was carried out, and discussion should be made regarding any complications that occurred during this process. Questions to ask yourself when writing this section:
-- _Is it made clear how the algorithms and techniques were implemented with the given datasets or input data?_
-- _Were there any complications with the original metrics or techniques that required changing prior to acquiring a solution?_
-- _Was there any part of the coding process (e.g., writing complicated functions) that should be documented?_
 
 I have used Jupyter Notebooks as development environment backed up with python 3.6 having numpy, scipy, pandas, pandas-datareader, matplotlib, scikit-learn, tensorflow, keras.
 
@@ -199,22 +195,13 @@ todo: take screenshots
 
 Second method of SVM regressor has polynomial kernel and gamma is in auto mode with third degree polynomial fitting.
 
-
 Thirdly, I have created an lstm model having 100 nodes with dropout rate of 0.2 followed by a flattening layer and a dense layer of one node for final prediction.
 
 5- For test flow I wondered what will be the effect of using single model for 13 stocks and 13 diffreent models for each stock. So for the test flow I set a parameter for calling different models and single model.
 I simply created models, split data fit models, get predictions and than keep the r2, rmse scores after calling the check score.
-
-
-
-
   
 
 ### Refinement
-In this section, you will need to discuss the process of improvement you made upon the algorithms and techniques you used in your implementation. For example, adjusting parameters for certain models to acquire improved solutions would fall under the refinement category. Your initial and final solutions should be reported, as well as any significant intermediate results as necessary. Questions to ask yourself when writing this section:
-- _Has an initial solution been found and clearly reported?_
-- _Is the process of improvement clearly documented, such as what techniques were used?_
-- _Are intermediate and final solutions clearly reported as the process is improved?_
 
 Here is an initial solution result for the problem. It is clear that RMSE namely deviation of the error depends on the value of the price so I decided to normalize the adj. close value and than run the solution again. It is clear that stocks with heigher prices rmse scores reduced and rmse values approached to each other.
 <table>
@@ -229,6 +216,39 @@ Here is an initial solution result for the problem. It is clear that RMSE namely
 </table>
 I than tried having two layers of lstm of 10 nodes to have better reults but it ended in a slightly worse result. Also trying tanh and softmax functions ended in local minimas having poor results. Since benchmark and lstm results are very near I stopped trying to make lstm results better.
 
+As far as the methods I tried best performing method is SVR polynomial. This method has very good R2 mean for stocks which is 
+0.9995363077 and very near to 1. This indicates that this model can be definetly used as an estimator for stock prices given the supportive information extracted from the stock market prices.
+
+I was expecting better results in LSTM technique but SVR polynomial was better in results. In the next few weeks I will try configure a better LSTM network which can outperform SVR polynomial.
+
+For the SVR definetly polynomial kernel performs better than linear one and also it is better than the benchmark. I have added a grid search similar section at the end of bar charts for SVM polynomial solution configuration generating the following results. 
+For the C Value C = 50, 100, 200 vales are tried and following mean values are gathered. C=200 can be selected
+
+|         | RMSE     | R2       |
+|---------|----------|----------|
+| default | 0.404407 | 0.999515 |
+| c200    | 0.382911 | 0.999563 |
+| c50     | 0.436590 | 0.999446 |
+
+
+For the gamma value gammma = 0.1, 0.2, 0.4, 0.8 values are tried and following results are gathered. gamma = 0.8 can be selected
+
+|         | RMSE     | R2       |
+|---------|----------|----------|
+| default |           0.404407 |     0.999515|
+| gamma_dot2 |         0.364122 |    0.999605|
+| rmse_gamma_dot4 |    0.315261  |   0.999716|
+
+For polynomial if we use degree 4 it gives better results.
+
+|         | RMSE     | R2       |
+|---------|----------|----------|
+|default |           0.404407 |  0.999515 |
+|c200   |            0.382911 |  0.999563 |
+|c50    |            0.436590 | 0.999446 |
+|gamma_dot2|         0.364122 |  0.999605 |
+|rmse_gamma_dot8 |   0.315261 |  0.999716 |
+|degree4  |          0.280099 |  0.999778 |
 
 ## IV. Results
 
@@ -237,71 +257,27 @@ In this section, the final model and any supporting qualities should be evaluate
 - _Is the final model reasonable and aligning with solution expectations? Are the final parameters of the model appropriate?_
 - _Has the final model been tested with various inputs to evaluate whether the model generalizes well to unseen data?_
 - _Is the model robust enough for the problem? Do small perturbations (changes) in training data or the input space greatly affect the results?_
-- _Can results found from the model be trusted?_
+- _Can results found from the model be trusted?_ 
+The final model as optimized in a manual grid search is SVR with parameters gamma=0.8, C=200, degree=3 since it gives the best results overall. 
 
-As far as the methods I tried best performing method is SVR polynomial. This method has very good R2 mean for stocks which is 
-0.9995363077 and very near to 1. This indicates that this model can be definetly used as an estimator for stock prices given the supportive information extracted from the stock market prices.
-
-I was expecting better results in LSTM technique but SVR polynomial was better in results. In the next few weeks I will try configure a better LSTM network which can outperform SVR polynomial.
-
-For the SVR definetly polynomial kernel performs better than linear one and also it is better than the benchmark. I have added a grid search similar section at the end of bar charts for SMV polynomial solution configuration generating the following results. 
-For the C Value C = 50, 100, 200 vales are tried and following mean values are gathered. C=200 can be selected
-
-RMSE                    R2
-default    0.404407     default    0.999515
-c200       0.382911     c200       0.999563
-c50        0.436590     c50        0.999446
-
-For the gamma value gammma = 0.1, 0.2, 0.4, 0.8 values are tried and following results are gathered. gamma = 0.8 can be selected
-
-RMSE                            R2
-default            0.404407     default       0.999515
-c200               0.382911     c200          0.999563
-c50                0.436590     c50           0.999446
-gamma_dot2         0.364122     gamma_dot2    0.999605
-rmse_gamma_dot4    0.315261     gamma_dot4    0.999716
-
-
-default            0.404407
-c200               0.382911
-c50                0.436590
-gamma_dot2         0.364122
-rmse_gamma_dot8    0.315261
-degree4            0.280099
-
-default       0.999515
-c200          0.999563
-c50           0.999446
-gamma_dot2    0.999605
-gamma_dot8    0.999716
-degree4       0.999778
 
 ### Justification
-In this section, your model’s final solution and its results should be compared to the benchmark you established earlier in the project using some type of statistical analysis. You should also justify whether these results and the solution are significant enough to have solved the problem posed in the project. Questions to ask yourself when writing this section:
-- _Are the final results found stronger than the benchmark result reported earlier?_
-- _Have you thoroughly analyzed and discussed the final solution?_
-- _Is the final solution significant enough to have solved the problem?_
-When we compare benchmark and optimized SVR results it is clear that the performance of the SVR method is better than the 
-benchmark in terms of both R2 and RMSE metrics as seen below. There is a significant improvement at the RMSE metric which show the deviation of the solution is declined very much.
 
-RMSE                      R2
-best         0.280099     best         0.999778
-benchmark    0.810680     benchmark    0.998444
+When we compare benchmark and optimized SVR results it is clear that the performance of the SVR method is better than the 
+benchmark in terms of both R2 and RMSE metrics as seen below. There is a significant improvement at the RMSE metric which show the deviation of the solution is declined very much. This predictor can be used for predictions since it has good scores of both R2 and RMSE.
+
+|         | RMSE     | R2       |
+|---------|----------|----------|
+|best         | 0.280099 |         0.999778|
+|benchmark    | 0.810680 |         0.998444|
 
 ## V. Conclusion
-_(approx. 1-2 pages)_
 
 ### Free-Form Visualization
-In this section, you will need to provide some form of visualization that emphasizes an important quality about the project. It is much more free-form, but should reasonably support a significant result or characteristic about the problem that you want to discuss. Questions to ask yourself when writing this section:
-- _Have you visualized a relevant or important quality about the problem, dataset, input data, or results?_
-- _Is the visualization thoroughly analyzed and discussed?_
-- _If a plot is provided, are the axes, title, and datum clearly defined?_
 
-For the visualization I have downloaded last months stock market prices and tried predictor after training with 9 years of data. The following figure for 12 stocks are plotted for predicted and actual prices.
+For the visualization I have downloaded last months stock market prices and tried predictor after training with 9 years of data. The following figure for 12 stocks are plotted for predicted and actual prices. It looks like the predictor is successfull at predicting the price with R2 and RMSE scores. We have R2 score over 0.9 for most of the stocks.
 
 <img src="https://github.com/farukbulbul/stock_price_indicator/blob/master/images/last_moth_reults.png"/>
-
-
 
 
 ### Reflection
