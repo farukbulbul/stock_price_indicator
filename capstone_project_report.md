@@ -262,13 +262,15 @@ For the gamma value gammma = 0.1, 0.2, 0.4, 0.8 values are tried and following r
 | gamma_dot2 |         0.364122 |    0.999605|
 | rmse_gamma_dot4 |    0.315261  |   0.999716|
 
-                   RMSE       R2
-default            0.404407   0.999515
-c200               0.382911   0.999563
-c50                0.436590   0.999446
-gamma_dot2         0.364122   0.999605
-rmse_gamma_dot8    0.315261   0.999716
-degree4            0.280099   0.999778      
+For polynomial if we use degree 4 it gives better results.
+|         | RMSE     | R2       |
+|---------|----------|----------|
+|default |           0.404407 |  0.999515 |
+|c200   |            0.382911 |  0.999563 |
+|c50    |            0.436590 | 0.999446 |
+|gamma_dot2|         0.364122 |  0.999605 |
+|rmse_gamma_dot8 |   0.315261 |  0.999716 |
+|degree4  |          0.280099 |  0.999778 |     
 
 ### Justification
 In this section, your model’s final solution and its results should be compared to the benchmark you established earlier in the project using some type of statistical analysis. You should also justify whether these results and the solution are significant enough to have solved the problem posed in the project. Questions to ask yourself when writing this section:
