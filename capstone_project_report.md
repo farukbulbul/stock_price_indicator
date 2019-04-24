@@ -299,7 +299,7 @@ In this section, you will need to provide some form of visualization that emphas
 
 For the visualization I have downloaded last months stock market prices and tried predictor after training with 9 years of data. The following figure for 12 stocks are plotted for predicted and actual prices.
 
-<img src="https://github.com/farukbulbul/stock_price_indicator/blob/master/images/last_month_reults.png"                  width="50%" height="50%"/>
+<img src="https://github.com/farukbulbul/stock_price_indicator/blob/master/images/last_moth_reults.png"/>
 
 
 
