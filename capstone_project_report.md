@@ -247,34 +247,33 @@ I was expecting better results in LSTM technique but SVR polynomial was better i
 For the SVR definetly polynomial kernel performs better than linear one and also it is better than the benchmark. I have added a grid search similar section at the end of bar charts for SMV polynomial solution configuration generating the following results. 
 For the C Value C = 50, 100, 200 vales are tried and following mean values are gathered. C=200 can be selected
 
-RMSE                    R2
-default    0.404407     default    0.999515
-c200       0.382911     c200       0.999563
-c50        0.436590     c50        0.999446
+           RMSE         R2
+default    0.404407     0.999515
+c200       0.382911     0.999563
+c50        0.436590     0.999446
 
+
+|         | RMSE     | R2       |   |   |
+|---------|----------|----------|---|---|
+| default | 0.404407 | 0.999515 |   |   |
+| c200    | 0.382911 | 0.999563 |   |   |
+| c50     | 0.436590 | 0.999446 |   |   |
 For the gamma value gammma = 0.1, 0.2, 0.4, 0.8 values are tried and following results are gathered. gamma = 0.8 can be selected
 
-RMSE                            R2
-default            0.404407     default       0.999515
-c200               0.382911     c200          0.999563
-c50                0.436590     c50           0.999446
-gamma_dot2         0.364122     gamma_dot2    0.999605
-rmse_gamma_dot4    0.315261     gamma_dot4    0.999716
+                   RMSE         R2
+default            0.404407     0.999515
+c200               0.382911     0.999563
+c50                0.436590     0.999446
+gamma_dot2         0.364122     0.999605
+rmse_gamma_dot4    0.315261     0.999716
 
-
-default            0.404407
-c200               0.382911
-c50                0.436590
-gamma_dot2         0.364122
-rmse_gamma_dot8    0.315261
-degree4            0.280099
-
-default       0.999515
-c200          0.999563
-c50           0.999446
-gamma_dot2    0.999605
-gamma_dot8    0.999716
-degree4       0.999778
+                   RMSE       R2
+default            0.404407   0.999515
+c200               0.382911   0.999563
+c50                0.436590   0.999446
+gamma_dot2         0.364122   0.999605
+rmse_gamma_dot8    0.315261   0.999716
+degree4            0.280099   0.999778      
 
 ### Justification
 In this section, your model’s final solution and its results should be compared to the benchmark you established earlier in the project using some type of statistical analysis. You should also justify whether these results and the solution are significant enough to have solved the problem posed in the project. Questions to ask yourself when writing this section:
@@ -297,11 +296,9 @@ In this section, you will need to provide some form of visualization that emphas
 - _Is the visualization thoroughly analyzed and discussed?_
 - _If a plot is provided, are the axes, title, and datum clearly defined?_
 
-For the visualization I have downloaded last months stock market prices and tried predictor after training with 9 years of data. The following figure for 12 stocks are plotted for predicted and actual prices.
+For the visualization I have downloaded last months stock market prices and tried predictor after training with 9 years of data. The following figure for 12 stocks are plotted for predicted and actual prices. It looks like the predictor is successfull at predicting the price with R2 and RMSE scores. We have R2 score over 0.9 for most of the stocks.
 
 <img src="https://github.com/farukbulbul/stock_price_indicator/blob/master/images/last_moth_reults.png"/>
-
-
 
 
 ### Reflection
