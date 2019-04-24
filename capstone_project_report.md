@@ -297,6 +297,13 @@ In this section, you will need to provide some form of visualization that emphas
 - _Is the visualization thoroughly analyzed and discussed?_
 - _If a plot is provided, are the axes, title, and datum clearly defined?_
 
+For the visualization I have downloaded last months stock market prices and tried predictor after training with 9 years of data. The following figure for 12 stocks are plotted for predicted and actual prices.
+
+<img src="https://github.com/farukbulbul/stock_price_indicator/blob/master/images/last_month_reults.png"                  width="50%" height="50%"/>
+
+
+
+
 ### Reflection
 In this section, you will summarize the entire end-to-end problem solution and discuss one or two particular aspects of the project you found interesting or difficult. You are expected to reflect on the project as a whole to show that you have a firm understanding of the entire process employed in your work. Questions to ask yourself when writing this section:
 - _Have you thoroughly summarized the entire process you used for this project?_
