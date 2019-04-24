@@ -221,9 +221,9 @@ Here is an initial solution result for the problem. It is clear that RMSE namely
       <tbody>
           <tr>
             <td>
-    <img src="https://github.com/farukbulbul/stock_price_indicator/blob/master/images/non-normalized-100-1000.png"                  width="50%" height="50%"/></td>
+    <img src="https://github.com/farukbulbul/stock_price_indicator/blob/master/images/non-normalized-100-1000.png"/></td>
             <td>
-    <img src="https://github.com/farukbulbul/stock_price_indicator/blob/master/images/normalized-100-1000.png" width="50%"          height="50%"/></td>
+    <img src="https://github.com/farukbulbul/stock_price_indicator/blob/master/images/normalized-100-1000.png"/></td>
         </tr>
   </tbody>
 </table>
