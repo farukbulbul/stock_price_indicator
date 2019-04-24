@@ -267,8 +267,8 @@ benchmark in terms of both R2 and RMSE metrics as seen below. There is a signifi
 
 |         | RMSE     | R2       |
 |---------|----------|----------|
-|best|         |0.280099|         0.999778|
-|benchmark|    |0.810680|         0.998444|
+|best|         | 0.280099 |         0.999778|
+|benchmark|    | 0.810680 |         0.998444|
 
 ## V. Conclusion
 
