@@ -125,12 +125,12 @@ Here is an example of data structure:
 </table>
 
 Typically every dataframe(stock historical file) have more than 2000 rows. In cell 3 I checked if a null value was existing in the data but i could not found any, so I did not need to do anything to cover null values.
-<img src="https://github.com/farukbulbul/stock_price_indicator/blob/master/amzn_historicalPrice_statistics.png">
+<img src="https://github.com/farukbulbul/stock_price_indicator/blob/master/images/amzn_historicalPrice_statistics.png">
 
 ### Exploratory Visualization
 In cell 4 I added frequetly used trend analysis formulas to the data as additional columns in order to have better results and in cell 5 I plotted original adjusted close price, bollinger bands and weighted moving average calculated. We can consider bollinder bands as standard deviation margins from current price of the stock. Also moving averages provide trend information for the data.
 
-<img src="https://github.com/farukbulbul/stock_price_indicator/blob/master/microsoft_plot.png"/>
+<img src="https://github.com/farukbulbul/stock_price_indicator/blob/master/images/microsoft_plot.png"/>
 
 ### Algorithms and Techniques
 
@@ -195,7 +195,6 @@ todo: take screenshots
 
 Second method of SVM regressor has polynomial kernel and gamma is in auto mode with third degree polynomial fitting.
 
-
 Thirdly, I have created an lstm model having 100 nodes with dropout rate of 0.2 followed by a flattening layer and a dense layer of one node for final prediction.
 
 5- For test flow I wondered what will be the effect of using single model for 13 stocks and 13 diffreent models for each stock. So for the test flow I set a parameter for calling different models and single model.
@@ -222,7 +221,7 @@ As far as the methods I tried best performing method is SVR polynomial. This met
 
 I was expecting better results in LSTM technique but SVR polynomial was better in results. In the next few weeks I will try configure a better LSTM network which can outperform SVR polynomial.
 
-For the SVR definetly polynomial kernel performs better than linear one and also it is better than the benchmark. I have added a grid search similar section at the end of bar charts for SMV polynomial solution configuration generating the following results. 
+For the SVR definetly polynomial kernel performs better than linear one and also it is better than the benchmark. I have added a grid search similar section at the end of bar charts for SVM polynomial solution configuration generating the following results. 
 For the C Value C = 50, 100, 200 vales are tried and following mean values are gathered. C=200 can be selected
 
 |         | RMSE     | R2       |
@@ -259,6 +258,8 @@ In this section, the final model and any supporting qualities should be evaluate
 - _Has the final model been tested with various inputs to evaluate whether the model generalizes well to unseen data?_
 - _Is the model robust enough for the problem? Do small perturbations (changes) in training data or the input space greatly affect the results?_
 - _Can results found from the model be trusted?_ 
+The final model as optimized in a manual grid search is SVR with parameters gamma=0.8, C=200, degree=3 since it gives the best results overall. 
+
 
 ### Justification
 
@@ -267,8 +268,8 @@ benchmark in terms of both R2 and RMSE metrics as seen below. There is a signifi
 
 |         | RMSE     | R2       |
 |---------|----------|----------|
-|best|         | 0.280099 |         0.999778|
-|benchmark|    | 0.810680 |         0.998444|
+|best         | 0.280099 |         0.999778|
+|benchmark    | 0.810680 |         0.998444|
 
 ## V. Conclusion
 
