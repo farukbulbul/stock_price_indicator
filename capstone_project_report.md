@@ -42,9 +42,9 @@ Since we are trying to predict a value this problem is a regression problem. We 
 I would like to use R2 and RMSE(root mean squared error) for evaluation metrics which are frequently used for estimation error calculations.
 With the following formulas:
 
-<img src="https://veribilimcisi.files.wordpress.com/2017/07/83buy.png" width="50%" height="50%"/>
+<img src="https://github.com/farukbulbul/stock_price_indicator/blob/master/images/error_metrics.png" width="50%" height="50%"/>
 
-<img src="https://cdn-images-1.medium.com/max/800/1*d7IVANCDovpXKP5N0rR2Yg.png" width="50%" height="50%"/>
+<img src="https://github.com/farukbulbul/stock_price_indicator/blob/master/images/r2.png" width="50%" height="50%"/>
 
 We will look at the deviation by calculating the RMSE of the model. If the deviation is big RMSE score will be far away from 0. Simply put, the lower the value the better and 0 means the model is perfect. Since we do not want high deviation for our predictions we would like to have RMSE score near to 0.
 
