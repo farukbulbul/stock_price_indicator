@@ -224,31 +224,39 @@ I was expecting better results in LSTM technique but SVR polynomial was better i
 For the SVR definetly polynomial kernel performs better than linear one and also it is better than the benchmark. I have added a grid search similar section at the end of bar charts for SVM polynomial solution configuration generating the following results. 
 For the C Value C = 50, 100, 200 vales are tried and following mean values are gathered. C=200 can be selected
 
-|         | RMSE     | R2       |
-|---------|----------|----------|
-| default | 0.404407 | 0.999515 |
-| c200    | 0.382911 | 0.999563 |
-| c50     | 0.436590 | 0.999446 |
-
+<table>
+      <thead><tr><th></th><th>RMSE</th><th>R2</th></tr></thead>
+      <tbody>
+        <tr><td>default</td><td>0.404407</td><td>0.999515</td></tr>
+        <tr><td>c200</td><td>0.382911</td><td>0.999563</td></tr>
+        <tr><td>c50</td><td>0.436590</td><td>0.999446</td></tr>
+      </tbody>
+</table>
 
 For the gamma value gammma = 0.1, 0.2, 0.4, 0.8 values are tried and following results are gathered. gamma = 0.8 can be selected
 
-|         | RMSE     | R2       |
-|---------|----------|----------|
-| default |           0.404407 |     0.999515|
-| gamma_dot2 |         0.364122 |    0.999605|
-| rmse_gamma_dot4 |    0.315261  |   0.999716|
+<table>
+      <thead><tr><th></th><th>RMSE</th><th>R2</th></tr></thead>
+      <tbody>
+        <tr><td>default</td><td>0.404407</td><td>0.999515</td></tr>
+        <tr><td>gamma_dot2</td><td>0.364122</td><td>0.999563</td></tr>
+        <tr><td>rmse_gamma_dot4</td><td>0.315261</td><td>0.999716</td></tr>
+      </tbody>
+</table>
 
 For polynomial if we use degree 4 it gives better results.
 
-|         | RMSE     | R2       |
-|---------|----------|----------|
-|default |           0.404407 |  0.999515 |
-|c200   |            0.382911 |  0.999563 |
-|c50    |            0.436590 | 0.999446 |
-|gamma_dot2|         0.364122 |  0.999605 |
-|rmse_gamma_dot8 |   0.315261 |  0.999716 |
-|degree4  |          0.280099 |  0.999778 |
+<table>
+      <thead><tr><th></th><th>RMSE</th><th>R2</th></tr></thead>
+      <tbody>
+        <tr><td>default</td><td>0.404407</td><td>0.999515</td></tr>
+        <tr><td>c200</td><td>0.382911</td><td>0.999563</td></tr>
+        <tr><td>c50</td><td>0.436590</td><td>0.999446</td></tr>
+        <tr><td>gamma_dot2</td><td>0.364122</td><td>0.999605</td></tr>
+        <tr><td>rmse_gamma_dot8</td><td>0.315261</td><td>0.999716</td></tr>
+        <tr><td>degree4</td><td>0.280099</td><td>0.999778</td></tr>
+      </tbody>
+</table>
 
 ## IV. Results
 
@@ -257,22 +265,27 @@ For polynomial if we use degree 4 it gives better results.
 The final model as optimized in a manual grid search is SVR with parameters gamma=0.8, C=200, degree=3 since it gives the best results overall. In the refinement section first two images of summary including all the methodologies both for R2 and RMSE scores the best option was the SVR method.
 For checking the robustness of the solution when we apply gaussian noise to Open, High, Close columns of the test data we get the following tables. When we apply gaussian noise we see that gathered information is still enough to predict better than most of the 0.75 R2 most of the time. It looks like small perturbations made to input data does not affect performance drastically.
 
-| Original Data |        | Perturbed Data |        |
-|---------------|--------|----------------|--------|
-| R2            | RMSE   | R2             | RMSE   |
-| 0.9348        | 0.9300 | 0.8780         | 1.2720 |
-| 0.9996        | 0.0653 | 0.9129         | 0.9963 |
-| 0.7605        | 2.6058 | 0.7573         | 2.6230 |
-| 0.8539        | 1.4107 | 0.7500         | 1.8454 |
-| 0.9979        | 0.1005 | 0.7402         | 1.1089 |
-| 0.8718        | 0.9552 | 0.7720         | 1.2736 |
-| 0.9952        | 0.2580 | 0.9192         | 1.0579 |
-| 0.9043        | 1.2920 | 0.9013         | 1.3120 |
-| 0.9614        | 0.4736 | 0.9601         | 0.4816 |
-| 0.9862        | 1.3174 | 0.9865         | 1.3026 |
-| 0.9141        | 1.1139 | 0.8930         | 1.2434 |
-| 0.9825        | 0.2795 | 0.6286         | 1.2873 |
-| 0.9646        | 0.5077 | 0.9570         | 0.5594 |
+<table>
+      <thead>
+            <tr><th>Original Data</th><th></th><th>Perturbed Data</th><th></th></tr>
+            <tr><th>R2</th><th></th><th>Perturbed Data</th><th></th></tr>
+      </thead>
+      <tbody>
+        <tr><td>0.9348</td> <td> 0.9300 </td><td> 0.8780 </td><td> 1.2720</td></tr>
+        <tr><td>0.9996</td> <td> 0.0653 </td><td> 0.9129 </td><td> 0.9963</td></tr>
+        <tr><td>0.7605</td> <td> 2.6058 </td><td> 0.7573 </td><td> 2.6230</td></tr>
+        <tr><td>0.8539</td> <td> 1.4107 </td><td> 0.7500 </td><td> 1.8454</td></tr>
+        <tr><td>0.9979</td> <td> 0.1005 </td><td> 0.7402 </td><td> 1.1089</td></tr>
+        <tr><td>0.8718</td> <td> 0.9552 </td><td> 0.7720 </td><td> 1.2736</td></tr>
+        <tr><td>0.9952</td> <td> 0.2580 </td><td> 0.9192 </td><td> 1.0579</td></tr>
+        <tr><td>0.9043</td> <td> 1.2920 </td><td> 0.9013 </td><td> 1.3120</td></tr>
+        <tr><td>0.9614</td> <td> 0.4736 </td><td> 0.9601 </td><td> 0.4816</td></tr>
+        <tr><td>0.9862</td> <td> 1.3174 </td><td> 0.9865 </td><td> 1.3026</td></tr>
+        <tr><td>0.9141</td> <td> 1.1139 </td><td> 0.8930 </td><td> 1.2434</td></tr>
+        <tr><td>0.9825</td> <td> 0.2795 </td><td> 0.6286 </td><td> 1.2873</td></tr>
+        <tr><td>0.9646</td> <td> 0.5077 </td><td> 0.9570 </td><td> 0.5594</td></tr>
+      </tbody>
+</table>
 
 Since ideal R2 score is 1 and our results are very near to 1 most of the time and also RMSE namely the deviation is small enough we can trust this solution to build an investment strategy on top of it.
 
@@ -281,10 +294,13 @@ Since ideal R2 score is 1 and our results are very near to 1 most of the time an
 When we compare benchmark and optimized SVR results it is clear that the performance of the SVR method is better than the 
 benchmark in terms of both R2 and RMSE metrics as seen below. There is a significant improvement at the RMSE metric which show the deviation of the solution is declined very much. This predictor can be used for predictions since it has good scores of both R2 and RMSE.
 
-|         | RMSE     | R2       |
-|---------|----------|----------|
-|best         | 0.280099 |         0.999778|
-|benchmark    | 0.810680 |         0.998444|
+<table>
+      <thead><tr><th></th><th>RMSE</th><th>R2</th></tr></thead>
+      <tbody>
+          <tr><td>best</td><td>0.280099</td><td>0.999778</td></tr>
+          <tr><td>benchmark</td><td>0.810680</td><td>0.998444</td></tr>
+      </tbody>
+</table>
 
 ## V. Conclusion
 
@@ -322,6 +338,7 @@ http://www.ccsenet.org/journal/index.php/jms/article/download/39897/22142
 [3] A machine learning based stock trading framework using technical and economic analysis
 http://cs229.stanford.edu/proj2017/final-reports/5234854.pdf
 [4] Trading volume: What it reveals about the market from https://www.rediff.com/money/special/trading-volume-what-it-reveals-about-the-market/20090703.htm
+
 
 
 
