@@ -253,15 +253,28 @@ For polynomial if we use degree 4 it gives better results.
 ## IV. Results
 
 ### Model Evaluation and Validation
-In this section, the final model and any supporting qualities should be evaluated in detail. It should be clear how the final model was derived and why this model was chosen. In addition, some type of analysis should be used to validate the robustness of this model and its solution, such as manipulating the input data or environment to see how the model’s solution is affected (this is called sensitivity analysis). Questions to ask yourself when writing this section:
-- _Is the final model reasonable and aligning with solution expectations? Are the final parameters of the model appropriate?_
-- _Has the final model been tested with various inputs to evaluate whether the model generalizes well to unseen data?_
-- _Is the model robust enough for the problem? Do small perturbations (changes) in training data or the input space greatly affect the results?_
-- _Can results found from the model be trusted?_ 
+
 The final model as optimized in a manual grid search is SVR with parameters gamma=0.8, C=200, degree=3 since it gives the best results overall. In the refinement section first two images of summary including all the methodologies both for R2 and RMSE scores the best option was the SVR method.
-For checking the robustness of the solution when we apply gaussian noise to Open, High, Close columns of the test data we get the following tables. When we apply gaussian noise we see that gathered information is still enough to predict better than most of the 0.75 R2 most of the time.
+For checking the robustness of the solution when we apply gaussian noise to Open, High, Close columns of the test data we get the following tables. When we apply gaussian noise we see that gathered information is still enough to predict better than most of the 0.75 R2 most of the time. It looks like small perturbations made to input data does not affect performance drastically.
 
+| Original Data |        | Perturbed Data |        |
+|---------------|--------|----------------|--------|
+| R2            | RMSE   | R2             | RMSE   |
+| 0.9348        | 0.9300 | 0.8780         | 1.2720 |
+| 0.9996        | 0.0653 | 0.9129         | 0.9963 |
+| 0.7605        | 2.6058 | 0.7573         | 2.6230 |
+| 0.8539        | 1.4107 | 0.7500         | 1.8454 |
+| 0.9979        | 0.1005 | 0.7402         | 1.1089 |
+| 0.8718        | 0.9552 | 0.7720         | 1.2736 |
+| 0.9952        | 0.2580 | 0.9192         | 1.0579 |
+| 0.9043        | 1.2920 | 0.9013         | 1.3120 |
+| 0.9614        | 0.4736 | 0.9601         | 0.4816 |
+| 0.9862        | 1.3174 | 0.9865         | 1.3026 |
+| 0.9141        | 1.1139 | 0.8930         | 1.2434 |
+| 0.9825        | 0.2795 | 0.6286         | 1.2873 |
+| 0.9646        | 0.5077 | 0.9570         | 0.5594 |
 
+Since ideal R2 score is 1 and our results are very near to 1 most of the time and also RMSE namely the deviation is small enough we can trust this solution to build an investment strategy on top of it.
 
 ### Justification
 
@@ -277,17 +290,12 @@ benchmark in terms of both R2 and RMSE metrics as seen below. There is a signifi
 
 ### Free-Form Visualization
 
-For the visualization I have downloaded last months stock market prices and tried predictor after training with 9 years of data. The following figure for 12 stocks are plotted for predicted and actual prices. It looks like the predictor is successfull at predicting the price with R2 and RMSE scores. We have R2 score over 0.9 for most of the stocks.
+For the visualization I have downloaded last months stock market prices and tried the predictor after training with 9 years of data. The following figure for 12 stocks are plotted for predicted and actual prices. It looks like the predictor is successfull at predicting the price with R2 and RMSE scores. We have R2 score over 0.9 for most of the stocks.
 
 <img src="https://github.com/farukbulbul/stock_price_indicator/blob/master/images/last_moth_reults.png"/>
 
 
 ### Reflection
-In this section, you will summarize the entire end-to-end problem solution and discuss one or two particular aspects of the project you found interesting or difficult. You are expected to reflect on the project as a whole to show that you have a firm understanding of the entire process employed in your work. Questions to ask yourself when writing this section:
-- _Have you thoroughly summarized the entire process you used for this project?_
-- _Were there any interesting aspects of the project?_
-- _Were there any difficult aspects of the project?_
-- _Does the final model and solution fit your expectations for the problem, and should it be used in a general setting to solve these types of problems?_
 
 To sum up in this project I tried to build a stock price predictor having input of stock market data. I followed the steps below.
 1- Gather data
@@ -298,31 +306,15 @@ To sum up in this project I tried to build a stock price predictor having input 
 6- Compare solution alternatives
 7- Visualize result
 8- perturb data to check robustness
-When I look at the results of similar works, my metric scores was beyond my expectations. I will try to serve it in future.
+When compared with the results of similar works, my metric scores was beyond my expectations. I will try to serve this work  in the after developing an investment strategy in the future.
+Intertesting thing to notice was as far as I tried LSTM was poorly performing than SVR. I suppose this is because of non linear information added as column to data like MACD, Bollinger Bands and RSI. In future work I will investigate the effect of these columns.
 
 
 ### Improvement
-In this section, you will need to provide discussion as to how one aspect of the implementation you designed could be improved. As an example, consider ways your implementation can be made more general, and what would need to be modified. You do not need to make this improvement, but the potential solutions resulting from these changes are considered and compared/contrasted to your current solution. Questions to ask yourself when writing this section:
-- _Are there further improvements that could be made on the algorithms or techniques you used in this project?_
-- _Were there algorithms or techniques you researched that you did not know how to implement, but would consider using if you knew how?_
-- _If you used your final solution as the new benchmark, do you think an even better solution exists?_
 
-Definitely a stock price 
+Since I have a full time job I did not have enough time to investigate other methods before the deadline. After having such good results I will try to investigate the performance of other methodologies used frequently to predict timeseries data.
 
-
------------
-
-**Before submitting, ask yourself. . .**
-
-- Does the project report you’ve written follow a well-organized structure similar to that of the project template?
-- Is each section (particularly **Analysis** and **Methodology**) written in a clear, concise and specific fashion? Are there any ambiguous terms or phrases that need clarification?
-- Would the intended audience of your project be able to understand your analysis, methods, and results?
-- Have you properly proof-read your project report to assure there are minimal grammatical and spelling mistakes?
-- Are all the resources used for this project correctly cited and referenced?
-- Is the code that implements your solution easily readable and properly commented?
-- Does the code execute without error and produce results similar to those reported?
-
-
+Definitely a stock price depends on not only previous exchange data but also company's financial performance and macro-economical conditions. So in order to have a better long term predictions we need to quantify those information and put into our information space. I suppose after having that done it would really be a good investment engine. 
 
 [1] The Effects of Psychology on Individual Investors’ Behaviors: Evidence from the Vietnam Stock Exchange
 http://www.ccsenet.org/journal/index.php/jms/article/download/39897/22142
