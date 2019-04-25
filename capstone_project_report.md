@@ -42,9 +42,10 @@ Since we are trying to predict a value this problem is a regression problem. We 
 I would like to use R2 and RMSE(root mean squared error) for evaluation metrics which are frequently used for estimation error calculations.
 With the following formulas:
 
-<img src="https://github.com/farukbulbul/stock_price_indicator/blob/master/images/error_metrics.png" width="50%" height="50%"/>
-
-<img src="https://github.com/farukbulbul/stock_price_indicator/blob/master/images/r2.png" width="50%" height="50%"/>
+<table align="center"> 
+  <tr><td><img src="https://veribilimcisi.files.wordpress.com/2017/07/83buy.png"/></td></tr>
+  <tr><td><img src="https://cdn-images-1.medium.com/max/800/1*d7IVANCDovpXKP5N0rR2Yg.png"/></td></tr>
+</table>
 
 We will look at the deviation by calculating the RMSE of the model. If the deviation is big RMSE score will be far away from 0. Simply put, the lower the value the better and 0 means the model is perfect. Since we do not want high deviation for our predictions we would like to have RMSE score near to 0.
 
@@ -125,12 +126,12 @@ Here is an example of data structure:
 </table>
 
 Typically every dataframe(stock historical file) have more than 2000 rows. In cell 3 I checked if a null value was existing in the data but i could not found any, so I did not need to do anything to cover null values.
-<img src="https://github.com/farukbulbul/stock_price_indicator/blob/master/images/amzn_historicalPrice_statistics.png">
+<img src="./images/amzn_historicalPrice_statistics.png">
 
 ### Exploratory Visualization
 In cell 4 I added frequetly used trend analysis formulas to the data as additional columns in order to have better results and in cell 5 I plotted original adjusted close price, bollinger bands and weighted moving average calculated. We can consider bollinder bands as standard deviation margins from current price of the stock. Also moving averages provide trend information for the data.
 
-<img src="https://github.com/farukbulbul/stock_price_indicator/blob/master/images/microsoft_plot.png"/>
+<img src="./images/microsoft_plot.png"/>
 
 ### Algorithms and Techniques
 
@@ -208,9 +209,9 @@ Here is an initial solution result for the problem. It is clear that RMSE namely
       <tbody>
           <tr>
             <td>
-    <img src="https://github.com/farukbulbul/stock_price_indicator/blob/master/images/non-normalized-100-1000.png"/></td>
+    <img src="./images/non-normalized-100-1000.png"/></td>
             <td>
-    <img src="https://github.com/farukbulbul/stock_price_indicator/blob/master/images/normalized-100-1000.png"/></td>
+    <img src="./images/normalized-100-1000.png"/></td>
         </tr>
   </tbody>
 </table>
@@ -268,7 +269,7 @@ For checking the robustness of the solution when we apply gaussian noise to Open
 <table>
       <thead>
             <tr><th>Original Data</th><th></th><th>Perturbed Data</th><th></th></tr>
-            <tr><th>R2</th><th></th><th>Perturbed Data</th><th></th></tr>
+            <tr><th>R2</th><th>RMSE</th><th>R2</th><th>RMSE</th></tr>
       </thead>
       <tbody>
         <tr><td>0.9348</td> <td> 0.9300 </td><td> 0.8780 </td><td> 1.2720</td></tr>
@@ -308,7 +309,7 @@ benchmark in terms of both R2 and RMSE metrics as seen below. There is a signifi
 
 For the visualization I have downloaded last months stock market prices and tried the predictor after training with 9 years of data. The following figure for 12 stocks are plotted for predicted and actual prices. It looks like the predictor is successfull at predicting the price with R2 and RMSE scores. We have R2 score over 0.9 for most of the stocks.
 
-<img src="https://github.com/farukbulbul/stock_price_indicator/blob/master/images/last_moth_reults.png"/>
+<img src="./images/last_moth_reults.png"/>
 
 
 ### Reflection
